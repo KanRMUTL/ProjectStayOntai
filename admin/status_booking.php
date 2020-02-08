@@ -30,8 +30,7 @@
                 if (isset($_GET['date'])) {
                     $date = $_GET['date'];
                 }
-                $uid = check_session("id");
-                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE a.booking_check_in = '{$date}' AND e.user_id='{$uid}' ORDER BY a.booking_id DESC ";
+                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE a.booking_check_in = '{$date}' ORDER BY a.booking_id DESC ";
 
                 $result = result_array($sql);
 
@@ -43,17 +42,17 @@
                     <div class="row">
                         <form action="">
 
-                            <div class="col-md-4 text-right">
+                            <div class="col-4 col-md-4 text-sm-right">
                                 ข้อมูลวันที่
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-4 col-md-4">
                                 <div class="form-group">
                                     <input type="text" class="form-control datepicker" name="date" value="<?= $date; ?>" required>
                                 </div>
                             </div>
 
-                            <div class="col-md-1">
+                            <div class="col-1 col-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -84,7 +83,7 @@
                                     <hr style="margin: 5px;">
                                     <?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?>
                                     <br>
-                                    <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
+                                    <b>ว/ด/ป :</b> <?= date_format(date_create($row['user_birth']), 'd/m/Y'); ?>  <br>
                                 </td>
 
                                 <td class="center">
@@ -116,7 +115,7 @@
                     <table class="table table-striped table-bordered table-hover d-block d-sm-none" id="table-mobile">
                         <thead>
                         <tr>
-                            <th width="100">รายการ</th>
+                            <th>รายการ</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -133,13 +132,12 @@
                                             <b>ราคารวม :</b> <?= ($row['booking_detail_price'] * ($row['booking_detail_adult'] + $row['booking_detail_child'])) * $row['booking_detail_total'] ?> บาท <br>
                                         </li>
                                         <li class="list-group-item text-left">
-                                            <hr style="margin: 5px;">
-                                            <?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?>
+                                            <b>ชื่อลูกค้า : </b> <?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?>
                                             <br>
-                                            <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
+                                            <b>ว/ด/ป :</b> <?= date_format(date_create($row['user_birth']), 'd/m/Y'); ?> <br>
                                         </li>
                                         <li class="list-group-item text-left">
-                                            <b>เช็คอิน : </b> <?= date_th($row['booking_check_in']); ?>
+                                            <b>เช็คอิน : </b> <?= date_th($row['booking_check_in']); ?> <br>
                                             <b>เช็คเอ้า : </b> <?= date_th($row['booking_check_out']); ?>
                                         </li>
                                         <li class="list-group-item text-left">
