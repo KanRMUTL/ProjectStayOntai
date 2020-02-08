@@ -1,0 +1,379 @@
+@font-face {
+    font-family: 'UIDSALMON2019';
+    font-weight: normal;
+    src: url('../fonts/UIDSALMON2019/UIDSALMON2019.eot');
+    src: url('../fonts/UIDSALMON2019/UIDSALMON2019.eot') format('embedded-opentype'), url('../fonts/UIDSALMON2019/UIDSALMON2019.woff') format('woff'), url('../fonts/UIDSALMON2019/UIDSALMON2019.ttf') format('truetype'), url('../fonts/UIDSALMON2019/UIDSALMON2019.svg#thaisanslite') format('svg')
+}
+
+@font-face {
+    font-family: 'thaisanslite';
+    src: url('../../admin/assets/font/thaisanslite/thaisanslite.eot');
+    src: url('../../admin/assets/font/thaisanslite/thaisanslite.eot') format('embedded-opentype'), url('../../admin/assets/font/thaisanslite/thaisanslite.woff') format('woff'), url('../../admin/assets/font/thaisanslite/thaisanslite.ttf') format('truetype'), url('../../admin/assets/font/thaisanslite/thaisanslite.svg#thaisanslite') format('svg')
+}
+
+.center-auto {
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+}
+
+h1.title-page {
+    font-size: 45px;
+}
+
+.bg_main {
+    background: #109b83;
+}
+
+.bg_white {
+    background: #ffffff;
+}
+
+.color_black {
+    color: #000000;
+}
+
+.color_white {
+    color: #ffffff;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.pt10 {
+    padding-top: 10px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb25 {
+    margin-bottom: 25px;
+}
+
+label {
+    margin-bottom: 0;
+}
+
+body {
+    font-family: 'thaisanslite', sans-serif;
+    background: #e2e0e1;
+    color: #202020;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.block-index {
+    background: #cccccc url("../images/bg.png") no-repeat top center;
+    width: 100%;
+    height: 726px;
+}
+
+.block-page {
+    background: #ffffff url("../images/bg_page_all.png") no-repeat top center;
+    width: 100%;
+    min-height: 660px;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    background: #083a39;
+    margin-top: 10px;
+    border-bottom: 2px solid #6ba459;
+    position: relative;
+    z-index: 1;
+    padding: 5px 30px;
+
+}
+
+.text-welcome {
+    text-align: right;
+    color: #ffffff;
+    font-size: 25px;
+    margin: -12px;
+}
+.text-welcome2{
+    text-align: right;
+    color: #ffffff;
+    font-size: 30px;
+   
+}
+.text-welbow{
+    margin: 15px;
+    margin-right: -12px;
+}
+.tex-weldow2{
+    margin: 15px;
+    margin-right: -1px;
+}
+.header-status {
+    text-align: right;
+}
+
+.header-status a {
+    display: inline-block;
+    margin-left: 25px;
+    color: #ffffff;
+}
+
+.menu {
+    width: 100%;
+    height: 70px;
+    background: #b2b2b5;
+    border-top: 3px solid #8fc176;
+    position: relative;
+}
+
+.menu ul {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-left: 170px;
+}
+
+.menu ul li {
+    float: left;
+    text-align: center;
+}
+
+.menu ul li:hover, .menu ul li.active {
+    background: #848e95;
+}
+
+.menu ul li a {
+    color: #083a39;
+    padding: 13px 15px;
+    font-size: 27px;
+    display: inline-block;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    background: #083a39;
+    padding: 8px 20px;
+    float: left;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+.main-index {
+    margin: -300px auto 0 auto;
+}
+
+.width_main {
+    width: 1000px;
+    height: auto;
+}
+
+.img-main-header {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.img-main-header img {
+    width: 100%;
+    height: auto;
+}
+
+.main-body {
+    background: #0B413E;
+    text-align: center;
+    clear: both;
+}
+
+.main-welcome {
+    color: #ffffff;
+    padding: 0 20px;
+}
+
+.main-promotion {
+    width: 100%;
+    height: 430px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 2px solid #b4c9c8;
+}
+
+.main-promotion h2 {
+    width: 100%;
+    display: inline-block;
+    background: #0b9b82;
+    margin-top: 0;
+    text-align: left;
+    color: #ffffff;
+    padding: 10px 10px 5px 10px;
+}
+
+.main-slide {
+    width: 100%;
+    height: auto;
+    background: transparent url("../images/bg_slide.png") repeat-x;
+}
+
+.main-slide .slide {
+    padding-top: 25px;
+    padding-left: 5px;
+    position: relative;
+}
+
+.main-slide .slide img {
+    width: 240px;
+    height: 180px;
+}
+
+.main-travel {
+    padding: 0 50px;
+}
+
+
+.main-travel img {
+    width: 200px;
+    height: 150px;
+}
+
+.main-travel a {
+    color: #ffffff;
+}
+
+.main-travel h2 {
+    width: 100%;
+    background: #109b83;
+    font-size: 40px;
+    color: #ffffff;
+    padding: 10px 10px 0px 10px;
+    margin-bottom: 0px;
+}
+
+.main-travel ul li {
+    float: left;
+}
+
+.img-main-footer {
+    width: 100%;
+    overflow: hidden;
+    margin-top: -5px;
+}
+
+.img-main-footer img {
+    width: 100%;
+    height: auto;
+}
+
+.footer {
+    background: #e2e0e1;
+    margin-top: 20px;
+}
+
+.logo-footer {
+    width: 100px;
+    height: auto;
+}
+
+.logo-footer img {
+    width: 100%;
+    height: auto;
+}
+
+.footer ul {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.footer ul li {
+    display: inline-block;
+}
+
+.footer ul li a {
+    color: #083a39;
+    padding: 0 15px;
+}
+
+.form_all {
+    background: #82b37a;
+    border: 2px solid #ffffff;
+    border-radius: 30px;
+    padding: 20px 30px;
+    margin-bottom: 50px;
+}
+
+.content-all {
+    width: 100%;
+    height: auto;
+    background: #ffffff;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    position: relative;
+}
+
+.padding-inout {
+    padding: 20px 30px;
+    margin: 40px 0;
+}
+
+.padding-bottom-20 {
+    padding-bottom: 20px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.list-news img {
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+.list-news-detail {
+    padding: 10px 20px 30px 20px;
+    position: relative;
+}
+
+.list-news-detail h2 {
+    font-size: 40px;
+}
+
+.news-read-more {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.list-travel {
+    text-align: center;
+}
+
+.list-travel img {
+    width: 100%;
+}
+
+.alert-homestay {
+    width: 120px;
+    height: auto;
+    background: #ff0000;
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    right: 5px;
+    padding-top: 8px;
+    border-radius: 10px;
+    color: #ffffff;
+}

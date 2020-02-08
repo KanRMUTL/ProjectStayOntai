@@ -1,0 +1,99 @@
+.input-div {
+    font-size: 13px;
+    position: relative;
+    font-family: sans-serif;
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 8px 12px 6px 12px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.pp-option {
+    display: none;
+    width: 225px;
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    background: #ffffff;
+    z-index: 999;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    padding: 10px 20px;
+    color: #000000;
+    font-size: 25px;
+}
+
+.pp-option p {
+    margin-bottom: 0;
+}
+
+.pp-option p b {
+    font-size: 18px;
+    width: 80px;
+    display: inline-block;
+}
+
+.pp-option p span {
+    color: #ff0000;
+}
+
+.hover_all {
+    cursor: pointer;
+}
+
+.hover_all:hover {
+    opacity: 0.5;
+}
+
+.bg_option_homestay {
+    background-color: rgba(0, 0, 0, 0.6);
+    left: 0px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 555;
+    display: none;
+}
+
+
+.cart-booking {
+    background: #ffced1;
+    float: right;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    padding: 10px 20px;
+    color: #000000;
+}
+
+.check_booking_all {
+    background: red;
+    color: white;
+    border-radius: 20px;
+    padding: 2px;
+    width: 100%;
+    font-size: 14px;
+    font-family: sans-serif;
+}
