@@ -29,7 +29,8 @@
                 $result = result_array($sql);
                 ?>
 
-                <div class="tb_all">
+                <!-- PC Screen -->
+                <div class="tb_all d-none d-sm-block">
                     <table class="table table-striped table-bordered table-hover" id="table-js">
                         <thead>
                         <tr>
@@ -78,6 +79,64 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- End PC Screen -->
+
+                <!-- Mobile Screen -->
+                <div class="tb_all d-block d-sm-none">
+                    <table class="table table-striped table-bordered table-hover" id="table-mobile">
+                        <thead>
+                        <tr>
+                            <th>รายการ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?PHP foreach ($result as $key => $row) { ?>
+                            <tr>
+                                <td>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <b>ลำดับที่ <?= $key + 1; ?></b>  
+                                            <br>
+                                            <a href="../uploads/<?= $row['payment_picture']; ?>" class="fancybox">
+                                                <img src="../uploads/<?= $row['payment_picture']; ?>" style="width: 100%;" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item text-left">
+                                            <b>เลขที่การจอง :</b> <?= booking_id($row['booking_id']); ?> <br>
+                                            <b>ธนาคาร :</b> <?= $row['payment_bank']; ?> <br>
+                                            <b>วันที่โอน :</b> <?= datetime_th($row['payment_date']); ?> <br>
+                                            <b>ราคารวมที่ต้องชำระเงิน :</b> <?= number_format($row['booking_sum'], 2); ?> <br>
+                                            <b>ลูกค้า :</b> <?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?> <br>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>ยอดโอน : </b><?= number_format($row['payment_money'],2); ?>
+                                        </li>
+                                        <li class="list-group-item">
+                                        <a href="process/booking_update.php?status=3&id=<?= $row['booking_id']; ?>&url=alert_payment.php"
+                                        class="btn btn-success btn-sm btn-rounded mb-2"
+                                        onclick="return confirm_custom(this.href,'ยืนยันการชำระเงินแล้ว?');">
+                                            เงินเข้าแล้ว
+                                        </a>
+                                        <a href="process/booking_update.php?status=1&id=<?= $row['booking_id']; ?>&url=alert_payment.php"
+                                        class="btn btn-danger btn-sm btn-rounded mb-2"
+                                        onclick="return confirm_custom(this.href,'ยืนยันว่าเงินไม่เข้า? ให้ลูกค้ากลับไปแจ้งโอนมาใหม่');">
+                                            เงินไม่เข้า
+                                        </a>
+                                        <a target="_blank" href="../print_booking.php?id=<?= $row['booking_id']; ?>" class="btn btn-info btn-rounded btn-sm">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </td>
+                            </tr>
+                        <?PHP } ?>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End PC Screen -->
+
+
             </div>
         </div>
     </div>
