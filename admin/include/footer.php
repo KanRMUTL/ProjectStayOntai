@@ -12,8 +12,27 @@
 
 <script>
     $(document).ready(function () {
+        var screenOfDevice = screen.width
+        if(screenOfDevice >= 576 ) {
+            $('#table-js').dataTable();
+        } else {
+            $('#table-mobile').dataTable({
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                responsive: true,
+                drawCallback: function() {
+                    $('table').css('width', '100%');
+                    $('#table-mobile_length label').addClass('d-flex')
+                    $('#table-mobile_filter label').addClass('d-flex justify-content-start')
+                    $('#table-mobile_filter label input').addClass('ml-5')
+                    $(`#table-mobile_length label select`).addClass('custom-select ml-1 mr-1')
+                    $('.tb_all').attr('style', 'padding: 10px 15px;')
+                    $('div.dataTables_filter input').attr('style', 'width: auto')
+                }
+            });
 
-        $('#table-js').dataTable();
+        }
 
         $(".fancybox").fancybox();
 
@@ -38,6 +57,3 @@
     });
 
 </script>
-
-
-
