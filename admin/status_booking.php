@@ -52,7 +52,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-1 col-md-4">
+                            <div class="col-1 col-md-1">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-search"></i>
                                 </button>

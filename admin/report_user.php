@@ -32,8 +32,8 @@
                     $sql = "SELECT * FROM tb_user WHERE user_type < 3 order by user_type DESC ";
                     $list = result_array($sql);
                     ?>
-
-                    <table class="table table-striped table-bordered table-hover" id="table-js">
+                    <!-- PC Screen -->
+                    <table class="table table-striped table-bordered table-hover d-none d-sm-block" id="table-js">
                         <thead>
                         <tr>
                             <th width="50">ลำดับ</th>
@@ -53,19 +53,50 @@
                                                         style="width: auto; height: 50px;" alt=""></td>
                                 <td class="center"><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?></td>
                                 <td class="center"><?= $row['user_tel']; ?></td>
-                                <td class="center"><?= $row['user_birth']; ?></td>
+                                <td class="center"><?= date_format(date_create($row['user_birth']), 'd/m/Y'); ?></td>
                                 <td class="center"><?= $row['user_address']; ?></td>
                                 <td class="center"><?= role($row['user_type']); ?></td>
                             </tr>
                         <?PHP } ?>
                         </tbody>
                     </table>
+                    <!-- End PC Screen -->
 
-
+                     <!-- Mobile Screen -->
+                     <table class="table table-striped table-bordered table-hover d-block d-sm-none" id="table-mobile">
+                        <thead>
+                        <tr>
+                            <th>รายการ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?PHP foreach ($list as $key => $row) { ?>
+                            <tr>
+                                <td>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <b>ลำดับที่ <?= $key + 1; ?></b>
+                                    </li>
+                                    <li class="list-group-item text-left">
+                                        <b>ชื่อ - สกุล : </b><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?><br>
+                                        <b>เบอร์โทร : </b><?= $row['user_tel']; ?><br>
+                                        <b>วันเกิด : </b><?= date_format(date_create($row['user_birth']), 'd/m/Y'); ?><br>
+                                        <b>ที่อยู่ : </b><?= $row['user_address']; ?><br>
+                                        <b>สถานะ : </b><?= role($row['user_type']); ?>
+                                    </li>
+                                </ul>
+                                </td>
+                            </tr>
+                        <?PHP } ?>
+                        </tbody>
+                    </table>
+                    <!-- End Mobile Screen -->
+                    
                     <hr>
-
-                    <a href="report.php" class="btn btn-warning">ย้อนกลับ</a>
-                    <a href="../print_employee.php" class="btn btn-warning">ปริ้นรายงาน</a>
+                    <div class="">
+                        <a href="report.php" class="btn btn-warning mb-2">ย้อนกลับ</a>
+                        <a href="../print_employee.php" class="btn btn-warning mb-2">ปริ้นรายงาน</a>
+                    </div>
                     <br>
                     <br>
                 </div>
