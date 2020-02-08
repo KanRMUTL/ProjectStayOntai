@@ -61,7 +61,8 @@
                         </form>
                     </div>
 
-                    <table class="table table-striped table-bordered table-hover" id="table-js">
+                    <!-- PC Screen -->    
+                    <table class="table table-striped table-bordered table-hover d-none d-sm-block" id="table-js">
                         <thead>
                         <tr>
                             <th width="90">เลขที่</th>
@@ -109,6 +110,54 @@
                  
                         </tbody>
                     </table>
+                    <!-- End PC Screen -->
+
+                    <!-- Mobile Screen -->    
+                    <table class="table table-striped table-bordered table-hover d-block d-sm-none" id="table-mobile">
+                        <thead>
+                        <tr>
+                            <th width="100">รายการ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?PHP foreach ($result as $key => $row) { ?>
+                            <tr>
+                                <td>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                        <b>เลขที่ : </b> <?= booking_id($row['booking_id']); ?>
+                                        </li>
+                                        <li class="list-group-item text-left">
+                                            <b>โฮมสเตย์ :</b> <?= $row['homestay_name'] ?> <br>
+                                            <b>ห้อง :</b> <?= $row['room_name'] ?> <br>
+                                            <b>ราคารวม :</b> <?= ($row['booking_detail_price'] * ($row['booking_detail_adult'] + $row['booking_detail_child'])) * $row['booking_detail_total'] ?> บาท <br>
+                                        </li>
+                                        <li class="list-group-item text-left">
+                                            <hr style="margin: 5px;">
+                                            <?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?>
+                                            <br>
+                                            <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
+                                        </li>
+                                        <li class="list-group-item text-left">
+                                            <b>เช็คอิน : </b> <?= date_th($row['booking_check_in']); ?>
+                                            <b>เช็คเอ้า : </b> <?= date_th($row['booking_check_out']); ?>
+                                        </li>
+                                        <li class="list-group-item text-left">
+                                            <b>สถานะ : </b><?= booking_detail_status($row['booking_detail_status']); ?>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a target="_blank" href="../print_booking.php?id=<?= $row['booking_id']; ?>" class="btn btn-info btn-rounded">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        <?PHP } ?>
+                        </tbody>
+                    </table>
+                    <!-- End Mobile Screen -->
+
                 </div>
             </div>
         </div>
