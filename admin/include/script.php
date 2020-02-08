@@ -10,6 +10,7 @@ check_login('id', 'login.php');
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/custom.css"/>
 
 <link href="assets/css/main.css" rel="stylesheet">
 
