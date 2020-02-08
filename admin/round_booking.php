@@ -57,7 +57,7 @@ $end = add_date($date, $total);
                 <legend>จองแบบหมุนเวียนโฮมสเตย์</legend>
 
                 <div class="col-md-12">
-                    <div class="row text-left">
+                    <div class="row text-left d-none d-sm-block">
                         <form action="process/set_homestay.php" method="post">
                             <input type="hidden" name="module" value="home">
                             <input type="hidden" name="action" value="homestay">
@@ -180,7 +180,7 @@ $end = add_date($date, $total);
                     usort($result, 'sortByOrder');
                     ?>
 
-                    <p class="text-center">
+                    <p class="text-center d-none d-sm-block">
                         เช็คอินวันที่ <span class="text-danger"><?= date_th($date); ?></span>
                         เช็คเอาท์วันที่ <span class="text-danger"><?= date_th($end); ?></span>
                         จำนวน <span class="text-danger"><?= $total; ?></span> คืน
@@ -190,7 +190,7 @@ $end = add_date($date, $total);
                         เด็ก <span class="text-danger"><?= $child; ?></span> คน
                     </p>
 
-                    <p style="margin-bottom: 10px; overflow: hidden;">
+                    <p style="margin-bottom: 10px; overflow: hidden;" class="d-none d-sm-block">
                         <a href="confirm_booking.php" class="cart-booking">
                             <i class="fa fa-eye"></i>
                             จองแล้ว <?= count($_SESSION['homestay']['booking']); ?> ห้อง
@@ -198,7 +198,8 @@ $end = add_date($date, $total);
                         </a>
                     </p>
 
-                    <div class="table-responsive">
+                    <!-- PC Screen -->
+                    <div class="table-responsive d-none d-sm-block">
                         <table class="table table-bordered">
                             <thead>
                             <tr style="background: #eeeeee;">
@@ -266,6 +267,75 @@ $end = add_date($date, $total);
                             </tbody>
                         </table>
                     </div>
+                    <!-- End PC Screen -->
+                    
+                    <!-- PC Screen -->
+                    <div class="table-responsive d-block d-sm-none">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr style="background: #eeeeee;">
+                                <th class="tb-middle" width="60">รายการ</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <?PHP foreach ($result as $key => $row) { ?>
+
+                                <?PHP
+                                $where = "  AND '{$beds}' <= room_beds";
+
+                                if ($type == "ห้องรวม") {
+                                    $where = " AND room_type = '{$type}' AND '{$beds}' <= room_beds";
+                                } elseif ($type == "ห้องส่วนตัว") {
+                                    $where = " AND room_type = '{$type}' AND '{$beds}' <= room_beds";
+                                }
+
+                                $msg = "<span style='color: #cc9c0b;'>ไม่มีห้อง</span>";
+                                $check = 0;
+                                $sql = "SELECT * FROM tb_room WHERE homestay_id = '{$row['homestay_id']}' {$where} ORDER BY room_id DESC";
+                                $room = result_array($sql);
+
+
+                                if (count($room) > 0) {
+                                    foreach ($room as $_room) {
+
+                                        $check = check_booking($_room['room_id'], $date, $end);
+
+                                        if (!$check) {
+                                            $msg = "<span style='color: red;'>ไม่ว่าง</span>";
+                                        } else {
+                                            $msg = "<span style='color: green;'>ว่าง</span>";
+                                            break;
+                                        }
+
+                                    }
+                                }
+                                ?>
+
+                                <tr>
+                                    <td>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <b>คิวที่ <?= $key + 1; ?></b>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <?= $row['homestay_name']; ?><br>
+                                                การจองทั้งหมด : <?= $row['total']; ?> ครั้ง
+                                            </li>
+                                            <li class="list-group-item"> 
+                                            <a href="select_room.php?id=<?= $row['homestay_id']; ?>" class="btn btn-primary">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+
+                            <?PHP } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- End PC Screen -->
 
                 </div>
 
