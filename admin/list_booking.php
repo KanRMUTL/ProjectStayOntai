@@ -90,7 +90,6 @@
                         <?PHP foreach ($result as $key => $row) { ?>
                             <tr>
                                 <td class="center">
-                                   
                                     <ul class="list-group">
                                         <li class="list-group-item">
                                             <b>

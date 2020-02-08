@@ -26,18 +26,15 @@
 
                 <legend>รายงานข้อมูลลูกค้า</legend>
 
-
-
+               
                 <div class="tb_all">
-
-
-
                     <?PHP
                     $sql = "SELECT * FROM tb_user WHERE user_type = 9";
                     $list = result_array($sql);
                     ?>
 
-                    <table class="table table-striped table-bordered table-hover" id="table-js">
+                    <!-- PC Screen -->    
+                    <table class="table table-striped table-bordered table-hover d-none d-sm-block" id="table-js">
                         <thead>
                         <tr>
                             <th width="50">ลำดับ</th>
@@ -63,15 +60,48 @@
                         <?PHP } ?>
                         </tbody>
                     </table>
+                    <!--End PC Screen -->    
 
+                    <!-- Mobile Screen -->    
+                    <table class="table table-striped table-bordered table-hover d-block d-sm-none" id="table-mobile">
+                        <thead>
+                            <tr>
+                                <th width="50">รายการ</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?PHP foreach ($list as $key => $row) { ?>
+                                <tr>
+                                    <td>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <b>ลำดับที่ <?= $key + 1; ?></b> 
+                                            </li>
+                                            <li class="list-group-item text-left">
+                                                <b>ชื่อลูกค้า : </b><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?> <br>
+                                                <b>อีเมล์ : </b><?= $row['user_email']; ?> <br>
+                                                <b>เบอร์โทร : </b><?= $row['user_tel']; ?> <br>
+                                                <b>วันเกิด : </b><?= $row['user_birth']; ?> <br>
+                                                <b>ที่อยู่ : </b><?= $row['user_address']; ?>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            <?PHP } ?>
+                        </tbody>
+                    </table>
+                    <!--End Mobile Screen -->    
 
                     <hr>
-
-                    <a href="report.php" class="btn btn-warning">ย้อนกลับ</a>
-                    <a href="../print_customer.php" class="btn btn-warning">ปริ้นรายงาน</a>
+                    <div class="container">
+                        <a href="report.php" class="btn btn-warning mb-2">ย้อนกลับ</a>
+                        <a href="../print_customer.php" class="btn btn-warning">ปริ้นรายงาน</a>
+                    </div>
                     <br>
                     <br>
                 </div>
+                
             </div>
         </div>
     </div>
