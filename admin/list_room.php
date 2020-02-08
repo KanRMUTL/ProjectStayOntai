@@ -86,7 +86,8 @@
 
                     </div>
 
-                    <table class="table table-bordered" style="background: #fff;">
+                    <!-- PC Screen -->           
+                    <table class="table table-bordered d-none d-sm-block" style="background: #fff;">
                         <tr style="background: #eee;">
                             <th class="text-center" width="250">รูปภาพ</th>
                             <th class="text-center">รายการ</th>
@@ -121,9 +122,9 @@
                                     <?PHP } ?>
                                 </td>
                                 <td class="text-left" style="padding-left: 30px;">
-                                    <b style="font-size: 40px;"><?= $row['room_name']; ?></b> <br>
-                                    <b>ประเภท ></b> <?= $row['room_type']; ?> <br>
-                                    <b>ขนาดห้อง ></b> <?= $row['room_size']; ?> <br>
+                                    <b style="font-size: 40px;"><?= $row['room_name']; ?></b> <br/>
+                                    <b>ประเภท ></b> <?= $row['room_type']; ?> <br/>
+                                    <b>ขนาดห้อง ></b> <?= $row['room_size']; ?> <br/>
                                     <b>รายละเอียด ></b> <?= $row['room_description']; ?>
                                 </td>
                                 <td class="text-center"><?= $row['room_beds']; ?> คน</td>
@@ -131,13 +132,72 @@
                             </tr>
                         <?PHP } ?>
                     </table>
+                    <!-- End PC Screen -->
+
+                    <!-- Mobile Screen -->
+                    <table class="table table-bordered d-block d-sm-none" style="background: #fff;">
+                        <tr style="background: #eee;">
+                            <th class="text-center">รายการ</th>
+                        </tr>
+
+                        <?PHP foreach ($result as $key => $row) { ?>
+
+                            <tr>
+                                <td class="text-center">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                    <p><b style="font-size: 30px;"><?= $row['room_name']; ?></b></p>
+                                    <?PHP
+                                    $sql = "SELECT * FROM tb_picture WHERE room_id = '{$row['room_id']}'";
+                                    $photo = result_array($sql);
+                                    ?>
+                                    <?PHP foreach ($photo as $check => $p) { ?>
+                                        <?PHP if ($check == 0) { ?>
+                                            <div class="col-md-12" style="padding: 0!important;">
+                                                <a href="../uploads/<?= $p['picture_img']; ?>" class="fancybox"
+                                                   rel="photo<?= $key ?>">
+                                                    <img src="../uploads/<?= $p['picture_img']; ?>" width="100%"/>
+                                                </a>
+                                            </div>
+                                        <?PHP } else { ?>
+                                            <div class="col-md-3" style="padding: 0!important;">
+                                                <a href="../uploads/<?= $p['picture_img']; ?>" class="fancybox"
+                                                   rel="photo<?= $key ?>">
+                                                    <img src="../uploads/<?= $p['picture_img']; ?>" width="100%"/>
+                                                </a>
+                                            </div>
+                                        <?PHP } ?>
+                                    <?PHP } ?>
+                                    </li>
+                                    <li class="list-group-item text-left">
+                                        <p><b>ประเภท: </b> <?= $row['room_type']; ?></p>
+                                        <p><b>ขนาดห้อง: </b> <?= $row['room_size']; ?></p>
+                                        <p><b>รายละเอียด: </b></p>
+                                        <p>
+                                            <textarea class="form-control"><?= $row['room_description']; ?></textarea>
+                                        </p>
+                                    </li>
+                                    <li class="list-group-item text-left">
+                                        <b>ผู้เข้าพัก: </b>    <?= $row['room_beds']; ?> <b>คน</b>
+                                    </li>
+                                    <li class="list-group-item text-left">
+                                        <b>ราคาต่อคืน: </b>  <?= number_format($head['homestay_price'], 2); ?> <b>บาท</b>
+                                    </li>
+                                </ul>
+                                    
+                                </td>
+                            </tr>
+                        <?PHP } ?>
+                    </table>
+                     <!-- End Mobile Screen -->
+                     <center>
+                        <a href="list_homestay.php" class="btn btn-warning">ย้อนกลับ</a>
+                    </center>
                 </div>
 
                 <hr>
 
-                <center>
-                    <a href="list_homestay.php" class="btn btn-warning">ย้อนกลับ</a>
-                </center>
+               
 
             </div>
         </div>
