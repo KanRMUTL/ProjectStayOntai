@@ -38,7 +38,8 @@
                 $result = result_array($sql);
                 ?>
 
-                <div class="tb_all">
+                <!-- PC Screen  -->
+                <div class="tb_all d-none d-sm-block">
                     <table class="table table-striped table-bordered table-hover" id="table-js">
                         <thead>
                         <tr>
@@ -85,6 +86,56 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- End PC Screen  -->
+
+                <!-- Mobile Screen  -->
+                <div class="tb_all d-block d-sm-none">
+                    <table class="table table-striped table-bordered table-hover" id="table-js">
+                        <thead>
+                        <tr>
+                            <th>รายการ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?PHP foreach ($result as $key => $row) { ?>
+                            <tr>
+                                <td>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                         <b>ลำดับที่ <?= $key + 1; ?></b>
+                                        </li>   
+                                        <li class="list-group-item text-left">
+                                            <b>เลขที่การจอง :</b> <?= booking_id($row['booking_id']); ?> <br>
+                                            <b>โฮมสเตย์ :</b> <?= $row['homestay_name'] ?> <br>
+                                            <b>ห้อง :</b> <?= $row['room_name'] ?> <br>
+                                            <b>ราคารวม :</b> <?= ($row['booking_detail_price'] * ($row['booking_detail_adult'] + $row['booking_detail_child'])) * $row['booking_detail_total'] ?> บาท <br>
+                                        </li>
+                                        <li class="list-group-item text-left">
+                                            <b>ลูกค้า : </b><?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?> <br>
+                                            <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
+                                            <b>อีเมล์ :</b> <?= $row['user_email']; ?> <br>
+                                            <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>สถานะ : <?= booking_detail_status($row['booking_detail_status']); ?></b>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a target="_blank" href="../print_booking.php?print&id=<?= $row['booking_id']; ?>" class="btn btn-info btn-rounded btn-sm mb-2">
+                                                พิมพ์
+                                            </a>
+                                            <a href="process/booking_detail_update.php?status=4&id=<?= $row['booking_detail_id']; ?>&url=check_in.php" class="btn btn-success btn-rounded btn-sm" onclick="return confirm_custom(this.href,'ยืนยันการเช็คอิน?');">
+                                                เช็คอิน
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        <?PHP } ?>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End Mobile Screen  -->
+                
             </div>
         </div>
     </div>

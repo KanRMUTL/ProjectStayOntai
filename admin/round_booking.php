@@ -269,7 +269,7 @@ $end = add_date($date, $total);
                     </div>
                     <!-- End PC Screen -->
                     
-                    <!-- PC Screen -->
+                    <!-- Mobile Screen -->
                     <div class="table-responsive d-block d-sm-none">
                         <table class="table table-bordered">
                             <thead>
@@ -323,9 +323,12 @@ $end = add_date($date, $total);
                                                 การจองทั้งหมด : <?= $row['total']; ?> ครั้ง
                                             </li>
                                             <li class="list-group-item"> 
-                                            <a href="select_room.php?id=<?= $row['homestay_id']; ?>" class="btn btn-primary">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
+                                               <b>สถานะ : <?= $msg; ?></b>
+                                            </li>
+                                            <li class="list-group-item"> 
+                                                <a href="select_room.php?id=<?= $row['homestay_id']; ?>" class="btn btn-primary">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
                                             </li>
                                         </ul>
                                     </td>
@@ -335,7 +338,7 @@ $end = add_date($date, $total);
                             </tbody>
                         </table>
                     </div>
-                    <!-- End PC Screen -->
+                    <!-- End Mobile Screen -->
 
                 </div>
 
