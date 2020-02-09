@@ -191,7 +191,7 @@
                     </a>
                 </div>
 
-                <div class="col-sm-4 col-lg-4">
+                <div class="col-sm-4 col-lg-4 d-none d-sm-block">
                     <a href="round_booking.php?reset">
                         <div class="dash-unit list_menu">
                             <div class="thumbnail">

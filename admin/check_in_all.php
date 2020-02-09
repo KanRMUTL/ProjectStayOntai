@@ -32,10 +32,11 @@
                 </div>
 
                 <?PHP
-$uid = check_session("id");
-$sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE booking_check_in != CURDATE() AND booking_status = 3 AND booking_detail_status = 3 AND e.user_id = '{$uid}'";
-$result = result_array($sql);
- ?>
+                    $uid = check_session("id");
+                    $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE booking_check_in != CURDATE() AND booking_status = 3 AND booking_detail_status = 3 AND e.user_id = '{$uid}'";
+                    $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id";
+                    $result = result_array($sql);
+                ?>
 
                 <!-- PC Screen -->
                 <div class="tb_all d-none d-sm-block">
@@ -84,7 +85,7 @@ $result = result_array($sql);
 
                 <!-- Mobile Screen -->
                 <div class="tb_all d-block d-sm-none">
-                    <table class="table table-striped table-bordered table-hover" id="table-js">
+                    <table class="table table-striped table-bordered table-hover" id="table-mobile">
                         <thead>
                         <tr>
                             <th>รายการ</th>
@@ -112,11 +113,6 @@ $result = result_array($sql);
                                         </li>
                                         <li class="list-group-item">
                                         <b>สถานะ : <?= booking_detail_status($row['booking_detail_status']); ?></b>
-                                        </li>
-                                        <li class="list-group-item">
-                                        <a target="_blank" href="../print_booking.php?print&id=<?= $row['booking_id']; ?>" class="btn btn-info btn-rounded btn-sm">
-                                            รายละเอียด
-                                        </a>
                                         </li>
                                     </ul>
                                 </td>

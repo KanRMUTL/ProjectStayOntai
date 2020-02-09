@@ -25,9 +25,9 @@
                 <legend>จัดการเข้าพักของลูกค้า</legend>
 
                 <?PHP
-                $uid = check_session("id");
-                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE e.user_id = '$uid' ORDER BY a.booking_id DESC ";
-                $result = result_array($sql);
+                    $uid = check_session("id");
+                    $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE e.user_id = '$uid' ORDER BY a.booking_id DESC ";
+                    $result = result_array($sql);
                 ?>
 
                 <!-- PC Screen  -->
@@ -115,19 +115,17 @@
                                         <li class="list-group-item">
                                             <b>สถานะ : <?= booking_detail_status($row['booking_detail_status']); ?></b>
                                         </li>
-                                        <li class="list-group-item">
-                                            <a target="_blank" href="../print_booking.php?print&id=<?= $row['booking_id']; ?>" class="btn btn-info btn-rounded btn-sm mb-2">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-
+                                        
                                             <?PHP if($row['booking_detail_status'] < 4){ ?>
-                                                <a href="process/booking_detail_update.php?status=6&id=<?= $row['booking_detail_id']; ?>&url=booking.php"
-                                                class="btn btn-danger btn-rounded btn-sm"
-                                                onclick="return confirm_custom(this.href,'ยืนยันการยกเลิก?');">
-                                                    ยกเลิก
-                                                </a>
+                                                <li class="list-group-item">
+                                                    <a href="process/booking_detail_update.php?status=6&id=<?= $row['booking_detail_id']; ?>&url=booking.php"
+                                                    class="btn btn-danger btn-rounded btn-sm"
+                                                    onclick="return confirm_custom(this.href,'ยืนยันการยกเลิก?');">
+                                                        ยกเลิก
+                                                    </a>
+                                                </li>
                                             <?PHP } ?>
-                                        </li>
+                                        
                                     </ul>
                                 </td>
                             </tr>

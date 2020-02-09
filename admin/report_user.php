@@ -94,8 +94,8 @@
                     
                     <hr>
                     <div class="">
-                        <a href="report.php" class="btn btn-warning mb-2">ย้อนกลับ</a>
-                        <a href="../print_employee.php" class="btn btn-warning mb-2">ปริ้นรายงาน</a>
+                        <a href="report.php" class="btn btn-warning d-sm-inline mb-2">ย้อนกลับ</a>
+                        <a href="../print_employee.php" class="btn btn-warning d-none d-sm-inline mb-2">ปริ้นรายงาน</a>
                     </div>
                     <br>
                     <br>

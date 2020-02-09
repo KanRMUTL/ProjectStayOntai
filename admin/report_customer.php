@@ -94,9 +94,9 @@
                     <!--End Mobile Screen -->    
 
                     <hr>
-                    <div class="container">
-                        <a href="report.php" class="btn btn-warning mb-2">ย้อนกลับ</a>
-                        <a href="../print_customer.php" class="btn btn-warning">ปริ้นรายงาน</a>
+                    <div class="row  ml-1 mr-1">
+                        <a href="report.php" class="btn btn-warning d-sm-inline">ย้อนกลับ</a>
+                        <a href="../print_customer.php" class="btn btn-warning d-none d-sm-inline">ปริ้นรายงาน</a>
                     </div>
                     <br>
                     <br>

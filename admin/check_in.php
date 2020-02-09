@@ -35,7 +35,6 @@
                 <?PHP
                 $uid = check_session("id");
                 $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE booking_check_in = CURDATE() AND booking_status = 3 AND booking_detail_status = 3 AND e.user_id = '{$uid}'";
-                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id";
                 $result = result_array($sql);
                 ?>
 
@@ -121,9 +120,6 @@
                                             <b>สถานะ : <?= booking_detail_status($row['booking_detail_status']); ?></b>
                                         </li>
                                         <li class="list-group-item">
-                                            <a target="_blank" href="../print_booking.php?print&id=<?= $row['booking_id']; ?>" class="btn btn-info btn-rounded btn-sm mb-2">
-                                                พิมพ์
-                                            </a>
                                             <a href="process/booking_detail_update.php?status=4&id=<?= $row['booking_detail_id']; ?>&url=check_in.php" class="btn btn-success btn-rounded btn-sm" onclick="return confirm_custom(this.href,'ยืนยันการเช็คอิน?');">
                                                 เช็คอิน
                                             </a>

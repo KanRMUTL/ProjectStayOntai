@@ -166,11 +166,6 @@
                                         <li class="list-group-item text-left">
                                             <b>สถานะ : </b><?= booking_detail_status($row['booking_detail_status']); ?>
                                         </li>
-                                        <li class="list-group-item">
-                                            <a target="_blank" href="../print_booking.php?id=<?= $row['booking_id']; ?>" class="btn btn-info btn-rounded">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </li>
                                     </ul>
                                 </td>
                             </tr>

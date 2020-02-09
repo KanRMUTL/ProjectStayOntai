@@ -122,9 +122,6 @@
                                         onclick="return confirm_custom(this.href,'ยืนยันว่าเงินไม่เข้า? ให้ลูกค้ากลับไปแจ้งโอนมาใหม่');">
                                             เงินไม่เข้า
                                         </a>
-                                        <a target="_blank" href="../print_booking.php?id=<?= $row['booking_id']; ?>" class="btn btn-info btn-rounded btn-sm">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
                                         </li>
                                         
                                     </ul>
