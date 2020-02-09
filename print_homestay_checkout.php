@@ -9,7 +9,7 @@ include 'function/function.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>รายงานการเช็คเอ้าท์</title>
+    <title>รายงานการเช็คเอาท์</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <style>
@@ -137,7 +137,7 @@ include 'function/function.php';
                 <th class="text-center" width="1500">ห้อง</th>
                 <th class="text-center" width="1000">ผู้จอง</th>
                 <th class="text-center" width="150">เบอร์โทรศัพท์</th>
-                <th class="text-center" width="1500">เช็คเอ้าท์</th>
+                <th class="text-center" width="1500">เช็คเอาท์</th>
             </tr>
         </thead>
         <tbody>

@@ -66,7 +66,7 @@
                             <th width="90">เลขที่</th>
                             <th>รายการ</th>
                             <th width="100">เช็คอิน</th>
-                            <th width="100">เช็คเอ้า</th>
+                            <th width="100">เช็คเอาท์</th>
                             <th width="100">สถานะ</th>
                             <th width="50"></th>
                         </tr>
@@ -161,7 +161,7 @@
                                         </li>
                                         <li class="list-group-item text-left">
                                             <b>เช็คอิน : </b> <?= date_th($row['booking_check_in']); ?> <br>
-                                            <b>เช็คเอ้า : </b> <?= date_th($row['booking_check_out']); ?>
+                                            <b>เช็คเอาท์ : </b> <?= date_th($row['booking_check_out']); ?>
                                         </li>
                                         <li class="list-group-item text-left">
                                             <b>สถานะ : </b><?= booking_detail_status($row['booking_detail_status']); ?>

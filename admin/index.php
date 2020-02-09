@@ -290,7 +290,7 @@
                             <div class="thumbnail">
                                 <img src="assets/img/icon/checkout.png">
                             </div>
-                            <h1>เช็คเอ้าห้องพัก</h1>
+                            <h1>เช็คเอาท์ห้องพัก</h1>
                         </div>
                     </a>
                 </div>

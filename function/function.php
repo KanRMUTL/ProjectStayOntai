@@ -280,7 +280,7 @@ function booking_status($num)
     } elseif ($num == 3) {
         $status = "ชำระเงินแล้ว";
     } elseif ($num == 5) {
-        $status = "เช็คเอ้าท์";
+        $status = "เช็คเอาท์";
     } elseif ($num == 6) {
         $status = "ยกเลิก";
     }
@@ -300,7 +300,7 @@ function booking_detail_status($num)
     } elseif ($num == 4) {
         $status = "เช็คอิน";
     } elseif ($num == 5) {
-        $status = "เช็คเอ้าท์";
+        $status = "เช็คเอาท์";
     } elseif ($num == 6) {
         $status = "ยกเลิก";
     }
