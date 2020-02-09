@@ -33,11 +33,10 @@
                 $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE a.booking_check_in = '{$date}' ORDER BY a.booking_id DESC ";
 
                 $result = result_array($sql);
-
-
                 ?>
 
-                <div class="tb_all">
+                <!-- PC Screen --> 
+                <div class="tb_all d-none d-sm-block">
 
                     <div class="row">
                         <form action="">
@@ -60,8 +59,8 @@
                         </form>
                     </div>
 
-                    <!-- PC Screen -->    
-                    <table class="table table-striped table-bordered table-hover d-none d-sm-block" id="table-js">
+                      
+                    <table class="table table-striped table-bordered table-hover" id="table-js">
                         <thead>
                         <tr>
                             <th width="90">เลขที่</th>
@@ -109,10 +108,34 @@
                  
                         </tbody>
                     </table>
-                    <!-- End PC Screen -->
 
-                    <!-- Mobile Screen -->    
-                    <table class="table table-striped table-bordered table-hover d-block d-sm-none" id="table-mobile">
+                </div>
+                <!-- End PC Screen -->
+
+                <!-- Mobile Screen -->   
+                <div class="tb_all d-block d-sm-none">
+                   
+                        <form action="" class="d-flex justify-content-between">
+
+                            <div class="">
+                                ข้อมูลวันที่
+                            </div>
+
+                            <div class="pl-2 pr-2">
+                                <div class="form-group">
+                                    <input type="text" class="form-control datepicker" name="date" value="<?= $date; ?>" required>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+
+                     
+                    <table class="table table-striped table-bordered table-hover" id="table-mobile">
                         <thead>
                         <tr>
                             <th>รายการ</th>
@@ -154,9 +177,10 @@
                         <?PHP } ?>
                         </tbody>
                     </table>
-                    <!-- End Mobile Screen -->
 
                 </div>
+                <!-- End Mobile Screen -->
+                
             </div>
         </div>
     </div>

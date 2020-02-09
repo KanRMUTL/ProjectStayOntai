@@ -35,6 +35,7 @@
                 <?PHP
                 $uid = check_session("id");
                 $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE booking_check_in = CURDATE() AND booking_status = 3 AND booking_detail_status = 3 AND e.user_id = '{$uid}'";
+                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id";
                 $result = result_array($sql);
                 ?>
 
@@ -90,7 +91,7 @@
 
                 <!-- Mobile Screen  -->
                 <div class="tb_all d-block d-sm-none">
-                    <table class="table table-striped table-bordered table-hover" id="table-js">
+                    <table class="table table-striped table-bordered table-hover" id="table-mobile">
                         <thead>
                         <tr>
                             <th>รายการ</th>
@@ -111,7 +112,7 @@
                                             <b>ราคารวม :</b> <?= ($row['booking_detail_price'] * ($row['booking_detail_adult'] + $row['booking_detail_child'])) * $row['booking_detail_total'] ?> บาท <br>
                                         </li>
                                         <li class="list-group-item text-left">
-                                            <b>ลูกค้า : </b><?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?> <br>
+                                            <b>ผู้จอง : </b><?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?> <br>
                                             <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
                                             <b>อีเมล์ :</b> <?= $row['user_email']; ?> <br>
                                             <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>

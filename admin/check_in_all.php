@@ -105,7 +105,7 @@ $result = result_array($sql);
                                             <b>ราคารวม :</b> <?= ($row['booking_detail_price'] * ($row['booking_detail_adult'] + $row['booking_detail_child'])) * $row['booking_detail_total'] ?> บาท
                                         </li>
                                         <li class="list-group-item text-left">
-                                            <b>ลูกค้า : </b><?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?> <br>
+                                            <b>ผู้จอง : </b><?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?> <br>
                                             <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
                                             <b>อีเมล์ :</b> <?= $row['user_email']; ?> <br>
                                             <b>ว/ด/ป :</b> <?= date_format(date_create($row['user_birth']), 'd/m/Y'); ?>
