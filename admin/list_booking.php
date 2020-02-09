@@ -43,7 +43,10 @@
                         ถึง
                     </div>
                     <div class="col-md-4 text-left mb-2">
-                        <input type="datetime-local" name="end" value="<?PHP echo $end ?>" id="end" class="form-control">
+                        <input type="datet" name="end" value="" id="end" class="form-control">
+                    </div>
+                    <div class="col-md-4 text-left mb-2">
+                        <input type="time" name="end" value="" id="end" class="form-control">
                     </div>
                     <div class="form-group col-md-2 mb-2">
                         <button type="submit" class="btn btn-primary">
