@@ -23,9 +23,37 @@
             <div id="register-form" style="position: relative;">
 
                 <legend>ข้อมูลการจองโฮมสเตย์</legend>
+                
+                <form action="" class="row ml-2 mr-2">
+                    <?PHP
+                        $start = date("Y-m-d").'T'.date("00:00");
+                        $end = date("Y-m-d").'T'.date("23:59");
+                        if (isset($_GET['start'], $_GET['start'])) {
+                            $start = $_GET['start'];
+                            $end = $_GET['end'];
+                        }
+                    ?>
+                    <div class="col-md-1">
+                        วันที่
+                    </div>
+                    <div class="col-md-4 text-left mb-2">
+                        <input type="datetime-local" name="start" value="<?PHP echo $start ?>" id="start" class="form-control">
+                    </div>
+                    <div class="col-md-1 mb-2">
+                        ถึง
+                    </div>
+                    <div class="col-md-4 text-left mb-2">
+                        <input type="datetime-local" name="end" value="<?PHP echo $end ?>" id="end" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2 mb-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
 
                 <?PHP
-                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id ORDER BY a.booking_id DESC ";
+                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE booking_date > '$start' AND  booking_date < '$end' ORDER BY a.booking_id DESC ";
                 $result = result_array($sql);
                 ?>
                 <!-- PC Screen -->          
@@ -70,6 +98,7 @@
                                     <a target="_blank" href="../print_booking.php?id=<?= $row['booking_id']; ?>" class="btn btn-info btn-rounded">
                                         <i class="fa fa-eye"></i>
                                     </a>
+                                    
                                 </td>
                             </tr>
                         <?PHP } ?>
