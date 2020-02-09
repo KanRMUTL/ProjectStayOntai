@@ -46,7 +46,7 @@
                                        style="font-size: 22px; text-align: right; padding-top: 3px;">วันที่</label>
 
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control datepicker" name="start" value="<?=$start?>" required>
+                                    <input type="date" class="form-control" name="start" value="<?=$start?>" required>
                                 </div>
 
                                 <label class="col-md-1 control-label"
@@ -54,7 +54,7 @@
 
 
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control datepicker" name="end" value="<?=$end?>" required>
+                                    <input type="date" class="form-control" name="end" value="<?=$end?>" required>
                                 </div>
 
 

@@ -47,7 +47,7 @@
 
                             <div class="col-4 col-md-4">
                                 <div class="form-group">
-                                    <input type="text" class="form-control datepicker" name="date" value="<?= $date; ?>" required>
+                                    <input type="date" class="form-control" name="date" value="<?= $date; ?>" required>
                                 </div>
                             </div>
 
@@ -123,7 +123,7 @@
 
                             <div class="pl-2 pr-2">
                                 <div class="form-group">
-                                    <input type="text" class="form-control datepicker" name="date" value="<?= $date; ?>" required>
+                                    <input type="date" class="form-control" name="date" value="<?= $date; ?>" required>
                                 </div>
                             </div>
 

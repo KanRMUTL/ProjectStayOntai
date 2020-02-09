@@ -49,7 +49,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     
-                                    <input id="start"  type="text" class="form-control datepicker"  name="start" value="<?=$start?>" required>
+                                    <input id="start"  type="date" class="form-control"  name="start" value="<?=$start?>" required>
                                    
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
 
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <input id="end" type="text" class="form-control datepicker"  name="end" value="<?=$end?>" required>
+                                    <input id="end" type="date" class="form-control"  name="end" value="<?=$end?>" required>
                                 </div>
                             </div>
                             

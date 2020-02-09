@@ -26,29 +26,51 @@
                 
                 <form action="" class="row ml-2 mr-2">
                     <?PHP
-                        $start = date("Y-m-d").'T'.date("00:00");
-                        $end = date("Y-m-d").'T'.date("23:59");
-                        if (isset($_GET['start'], $_GET['start'])) {
-                            $start = $_GET['start'];
-                            $end = $_GET['end'];
+                        $start_date = date("Y-m-d");
+                        $start_time = date("00:00");
+                        $end_date = date("Y-m-d");
+                        $end_time = date("23:59");
+                       
+                        if (isset($_GET['start_date'], $_GET['start_date'])) {
+                            $start_date = $_GET['start_date'];
+                            $start_tiem = $_GET['start_time'];
+                            $end_tiem = $_GET['end_time'];
+                            $end_tiem = $_GET['end_time'];
+
                         }
+                        $start = $start_date.'T'.$start_time;
+                        $end = $end_date.'T'.$end_time;
                     ?>
-                    <div class="col-md-1">
-                        วันที่
+                    <div class="row">
+                        <div class="col-md-2">
+                            วันที่เริ่มต้น
+                        </div>
+                        <div class="col-md-4 text-left mb-2">
+                            <input type="date" name="start_date" value="<?PHP echo $start_date ?>" id="start" class="form-control">
+                        </div>
+                        <div class="col-md-1">
+                            เวลา
+                        </div>
+                        <div class="col-md-4 text-left mb-2">
+                            <input type="time" name="start_time" value="<?PHP echo $start_time ?>" id="start" class="form-control">
+                        </div>
                     </div>
-                    <div class="col-md-4 text-left mb-2">
-                        <input type="datetime-local" name="start" value="<?PHP echo $start ?>" id="start" class="form-control">
+                    <div class="row">
+                        <div class="col-md-2">
+                            วันที่สิ้นสุด
+                        </div>
+                        <div class="col-md-4 text-left mb-2">
+                            <input type="date" name="end_date" value="<?PHP echo $end_date ?>" id="start" class="form-control">
+                        </div>
+                        <div class="col-md-1">
+                            เวลา
+                        </div>
+                        <div class="col-md-4 text-left mb-2">
+                            <input type="time" name="end_time" value="<?PHP echo $end_time ?>" id="start" class="form-control">
+                        </div>
                     </div>
-                    <div class="col-md-1 mb-2">
-                        ถึง
-                    </div>
-                    <div class="col-md-4 text-left mb-2">
-                        <input type="datet" name="end" value="" id="end" class="form-control">
-                    </div>
-                    <div class="col-md-4 text-left mb-2">
-                        <input type="time" name="end" value="" id="end" class="form-control">
-                    </div>
-                    <div class="form-group col-md-2 mb-2">
+                    
+                    <div class="form-group">
                         <button type="submit" class="btn btn-primary">
                             <i class="fa fa-search"></i>
                         </button>
