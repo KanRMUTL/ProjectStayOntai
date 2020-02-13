@@ -27,7 +27,7 @@ check_login('id', 'login.php');
 <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
 
 
-<link rel="stylesheet"  href="../assets/js/fancybox/source/jquery.fancybox.css"/>
+<link rel="stylesheet" href="../assets/js/fancybox/source/jquery.fancybox.css"/>
 <script src="../assets/js/fancybox/source/jquery.fancybox.pack.js"></script>
 <script src="../assets/js/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
 <script src="../assets/js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
@@ -38,8 +38,8 @@ check_login('id', 'login.php');
 <script src="../assets/ckeditor/ckeditor.js"></script>
 
 <style>
-    div.ui-datepicker{
-        font-size:13px;
+    div.ui-datepicker {
+        font-size: 13px;
     }
 
     body {
@@ -47,7 +47,7 @@ check_login('id', 'login.php');
         font-size: 22px;
     }
 
-    input ,textarea {
+    input, textarea {
         font-size: 20px !important;
     }
 
@@ -89,7 +89,7 @@ check_login('id', 'login.php');
         padding: 10px;
     }
 
-    button , .btn {
+    button, .btn {
         font-family: sans-serif;
     }
 
@@ -101,15 +101,15 @@ check_login('id', 'login.php');
         opacity: 0.5;
     }
 
-    .tb_all{
+    .tb_all {
         padding: 10px 25px;
     }
 
-    table tr th , table tr td {
+    table tr th, table tr td {
         text-align: center;
     }
 
-    .form_all{
+    .form_all {
         text-align: left;
         padding: 30px 100px;
 
@@ -117,6 +117,10 @@ check_login('id', 'login.php');
 
     .tb-middle {
         vertical-align: middle !important;
+    }
+
+    g.highcharts-button {
+        display: none !important;
     }
 </style>
 

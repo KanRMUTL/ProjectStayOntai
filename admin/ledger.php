@@ -100,7 +100,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?PHP
+                            $sum = 0;
+                            ?>
                             <?PHP foreach ($list as $key => $row) { ?>
+                                <?PHP
+                                $sum = $sum + $row['money'];
+                                ?>
                                 <tr>
                                     <td class="center"><?= $row['name']; ?></td>
                                     <td class="center"><?= $row['money']; ?></td>
@@ -131,6 +137,11 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div style="text-align: left;">
+                        ราคารวม : <?=$sum;?> บาท
+                    </div>
+
 
                 </div>
             </div>

@@ -21,7 +21,9 @@ $beds = $_SESSION['homestay']['beds'];
 $end = add_date($start, $total);
 
 ?>
-
+<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin: 8px">
+    <span aria-hidden="true">&times;</span>
+</button>
 
 <h3 class="title-page text-center">โฮมสเตย์ > <?= $head['homestay_name']; ?></h3>
 

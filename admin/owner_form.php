@@ -89,6 +89,7 @@
                                 <label>อีเมล์</label>
                                 <input type="email" class="form-control" name="email"
                                        value="<?= $my['user_email']; ?>" <?=$disabled;?> required>
+                                <input type="hidden" class="form-control" name="email"value="<?= $my['user_email']; ?>" required>
                             </div>
                             <div class="col-md-6">
                                 <label>รหัสผ่าน</label>

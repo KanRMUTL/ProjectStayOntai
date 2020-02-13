@@ -125,8 +125,6 @@
                         $count1 = row_array($sql);
 
 
-
-
                         $sql = "SELECT COALESCE(SUM(ledger_money),0) as num FROM tb_ledger WHERE homestay_id = '{$row['homestay_id']}' AND MONTH(ledger_date) = '{$mm}' AND YEAR(ledger_date) = '{$yy}' AND ledger_type = 1";
                         $count2 = row_array($sql);
 
@@ -134,7 +132,6 @@
                         $data[$key]['name'] = "รายรับ";
                         $data[$key]['data'][$i] = $count1['num'] + $count2['num'];
 
-                       
 
                         $sql = "SELECT COALESCE(SUM(ledger_money),0) as num FROM tb_ledger WHERE homestay_id = '{$row['homestay_id']}' AND MONTH(ledger_date) = '{$mm}' AND YEAR(ledger_date) = '{$yy}' AND ledger_type = 2";
                         $count3 = row_array($sql);
@@ -146,6 +143,10 @@
                         $data[$key]['name'] = "รายจ่าย";
                         $data[$key]['data'][$i] = $count3['num'] + $count4['num'];
 
+
+                        $key = 2;
+                        $data[$key]['name'] = "รวม";
+                        $data[$key]['data'][$i] = ($count1['num'] + $count2['num']) - ($count3['num'] + $count4['num']);
 
                     }
 
@@ -160,9 +161,8 @@
                     <hr>
 
 
-
                     <a href="report.php" class="btn btn-warning">ย้อนกลับ</a>
-                     <a href="../print_moeny.php?mm=<?=$mm; ?>&yy=<?=$yy;?>" class="btn btn-primary">ปริ้นรายงาน</a>
+                    <a href="../print_moeny.php?mm=<?= $mm; ?>&yy=<?= $yy; ?>" class="btn btn-primary">ปริ้นรายงาน</a>
 
                     <br>
                     <br>
@@ -183,7 +183,7 @@
             chart: {
                 type: 'column'
             },
-            colors: ['#07c700', '#dd765e'],
+            colors: ['#07c700', '#dd765e' , '#3F49DD'],
             title: {
                 text: 'รายงานรายรับ-รายจ่าย เดือน <?=mount_name($mm);?> พ.ศ. <?=$yy + 543;?>',
                 x: -20 //center
