@@ -52,7 +52,7 @@
                             <div class="thumbnail">
                                 <img src="assets/img/icon/barchart.png">
                             </div>
-                            <h1>รายงานสรุปจำนวนลูกค้า</h1>
+                            <h1>รายงานยอดลูกค้าที่เข้าพัก</h1>
                         </div>
                     </a>
                 </div>
@@ -63,7 +63,7 @@
                             <div class="thumbnail">
                                 <img src="assets/img/icon/folder_customer.png">
                             </div>
-                            <h1>รายงานยอดลูกค้าที่เข้าพัก</h1>
+                            <h1>รายงานสรุปจำนวนลูกค้า</h1>
                         </div>
                     </a>
                 </div>
@@ -124,6 +124,17 @@
                     </a>
                 </div>
 
+                <div class="col-sm-4 col-lg-4">
+                    <a href="report_paymentall.php">
+                        <div class="dash-unit list_menu">
+                            <div class="thumbnail">
+                                <img src="assets/img/icon/moenyall.png">
+                            </div>
+                            <h1>รายงานการชำระเงินทั้งหมด</h1>
+                        </div>
+                    </a>
+                </div>
+
             </div>
 
 
@@ -135,18 +146,18 @@
                             <div class="thumbnail">
                                 <img src="assets/img/icon/barchart.png">
                             </div>
-                            <h1>รายงานสรุปจำนวนลูกค้า</h1>
+                            <h1>รายงานยอดลูกค้าที่เข้าพัก</h1>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-sm-4 col-lg-4">
-                    <a href="report_booking.php">
+                    <a href="report_homestay_booking.php">
                         <div class="dash-unit list_menu">
                             <div class="thumbnail">
                                 <img src="assets/img/icon/folder_customer.png">
                             </div>
-                            <h1>รายงานยอดลูกค้าที่เข้าพัก</h1>
+                            <h1>รายงานสรุปจำนวนลูกค้า</h1>
                         </div>
                     </a>
                 </div>
@@ -196,12 +207,22 @@
                 </div>
 
                 <div class="col-sm-4 col-lg-4">
-                    <a href="report_review.php">
+                    <a href="report_homestay_review.php">
                         <div class="dash-unit list_menu">
                             <div class="thumbnail">
                                 <img src="assets/img/icon/qq.png">
                             </div>
                             <h1>รายงานคะแนนรีวิว</h1>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4 col-lg-4">
+                    <a href="report_homestay_paymentall.php">
+                        <div class="dash-unit list_menu">
+                            <div class="thumbnail">
+                                <img src="assets/img/icon/moenyall.png">
+                            </div>
+                            <h1>รายงานการชำระเงินทั้งหมด</h1>
                         </div>
                     </a>
                 </div>
@@ -217,7 +238,7 @@
                             <div class="thumbnail">
                                 <img src="assets/img/icon/barchart.png">
                             </div>
-                            <h1>รายงานสรุปจำนวนลูกค้า</h1>
+                            <h1>รายงานยอดลูกค้าที่เข้าพัก</h1>
                         </div>
                     </a>
                 </div>
@@ -228,7 +249,7 @@
                             <div class="thumbnail">
                                 <img src="assets/img/icon/folder_customer.png">
                             </div>
-                            <h1>รายงานยอดลูกค้าที่เข้าพัก</h1>
+                            <h1>รายงานสรุปจำนวนลูกค้า</h1>
                         </div>
                     </a>
                 </div>

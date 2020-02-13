@@ -43,10 +43,11 @@
                             <div style="border: 2px solid #cccccc; padding: 15px 20px; background: #ffffff; margin-top: 3px;">
                                 <div class="row">
                                     <div class="col-md-9">
+                                        <b>ได้ทำการตอบกลับ</b>
                                         <p>
                                             <?=$_answer['review_answer_detail'];?>
                                         </p>
-                                        <b>ผู้ตอบ :</b> <?= $_answer['user_titlename']; ?><?= $_answer['user_name']; ?> <?= $_answer['user_lastname']; ?>
+                                        <b>ผู้ตอบ : </b> <?= $_answer['user_titlename']; ?><?= $_answer['user_name']; ?> <?= $_answer['user_lastname']; ?>
                                         [ <?= role($_answer['user_type']); ?> ]
                                     </div>
                                     <div class="col-md-3 text-center">
@@ -67,7 +68,10 @@
                     <div style="width: 172%; height: auto; overflow: hidden; background: #ffffff; border-radius: 20px; padding: 20px 50px; border: 3px solid #cccccc;" id="review_setup">
                         <h2 class="text-center">ข้อความรีวิว</h2>
 
-                        <div class="form-group">
+                        
+
+                        <form method="post" action="process/review_process.php">
+                            <div class="form-group">
                                 <label>โฮมสเตย์</label>
                                 <?PHP
                                 $sql = "SELECT * FROM tb_homestay ORDER BY homestay_id DESC ";
@@ -80,8 +84,6 @@
                                     <?PHP } ?>
                                 </select>
                             </div>
-
-                        <form method="post" action="process/review_process.php">
                             <div class="form-group">
                                 <label>หัวข้อ</label>
                                 <input type="name" class="form-control" name="name">

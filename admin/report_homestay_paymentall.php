@@ -24,7 +24,7 @@
         <div id="register-wraper">
             <div id="register-form" style="position: relative;">
 
-                <legend>รายงานคะแนนรีวิว</legend>
+                <legend>รายงานการชำระเงิน</legend>
 
 
 
@@ -32,7 +32,9 @@
 
 
                     <?PHP
-                    $sql = "SELECT * FROM tb_review a INNER JOIN tb_user b ON a.user_id = b.user_id INNER JOIN tb_homestay d ON a.homestay_id = d.homestay_id ORDER BY review_id DESC ";
+                    $uid = check_session("id");
+                    $sql = "SELECT * FROM tb_payment p INNER JOIN tb_booking b ON p.booking_id = b.booking_id INNER JOIN tb_user u ON b.user_id = u.user_id INNER JOIN tb_booking_detail d ON b.booking_id = d.booking_id INNER JOIN tb_room m ON d.room_id = m.room_id INNER JOIN tb_homestay e ON m.homestay_id = e.homestay_id WHERE  e.user_id='{$uid}' AND booking_status BETWEEN 3 AND 5 ORDER BY payment_id DESC ";
+
                     $list = result_array($sql);
                     ?>
 
@@ -42,11 +44,11 @@
                         <thead>
                         <tr>
                             <th width="50">ลำดับ</th>
-                            <th>ความคิดเห็น</th>
-                            <th>คะแนน</th>
-                            <th>โฮมสเตย์</th>
-                            <th>วันที่</th>
-                            <th>ลูกค้า</th>
+                            <th>วันที่ชำระเงิน</th>
+                            <th>ชื่อธนาคาร</th>
+                            <th>ชื่อผู้ชำระเงิน</th>
+                            <th>จำนวนเงิน</th>
+                            <th>สถานะ</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,13 +56,14 @@
                             <tr>
                                 <td class="center"><?= $key + 1; ?></td>
                                 <td class="center">
-                                    <b><?= $row['review_name']; ?> </b><br>
-                                    <?= $row['review_detail']; ?>
+                                    <?= $row['payment_date']; ?>
                                 </td>
-                                <td class="center"><?= $row['review_star']; ?></td>
-                                <td class="center"><?= $row['homestay_name']; ?></td>
-                                <td class="center"><?= datetime_th($row['review_date']); ?></td>
+                                <td class="center"><?= $row['payment_bank']; ?></td>
                                 <td class="center"><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?></td>
+                                <td class="center"><?= number_format($row['payment_money']); ?></td>
+                                <td class="center">
+                                    <?= booking_status($row['booking_status']); ?>
+                                </td>
                             </tr>
                         <?PHP } ?>
                         </tbody>
@@ -85,11 +88,11 @@
                                                 <b>ลำดับที่ <?= $key + 1; ?></b> 
                                             </li>
                                             <li class="list-group-item">
-                                                <b>ความคิดเห็น : </b><?= $row['review_detail']; ?><br>
-                                                <b>คะแนน : </b><?= $row['review_star']; ?><br>
-                                                <b>โฮมสเตย์  : </b><?= $row['homestay_name']; ?> <br>
-                                                <b>วันที่ : </b><?= datetime_th($row['review_date']); ?> <br>
-                                                <b>ลูกค้า : </b><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?> <br>
+                                                <b>วันที่ชำระเงิน : </b><?= $row['payment_date']; ?><br>
+                                                <b>ชื่อธนาคาร : </b><?= $row['payment_bank']; ?><br>
+                                                <b>ชื่อผู้ชำระเงิน  : </b><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?> <br>
+                                                <b>จำนวนเงิน : <?= number_format($row['payment_money']); ?> <br>
+                                                <b>สถานะ : </b> <?= booking_status($row['booking_status']); ?> <br>
                                              </li>
                                          </ul>
                                      </div>
@@ -102,7 +105,7 @@
                     <hr>
 
                     <a href="report.php" class="btn btn-warning">ย้อนกลับ</a>
-                    <a href="../print_review.php" class="btn btn-warning d-none d-sm-inline" >ปริ้นรายงาน</a>
+                    <a href="../print_homestay_paymentall.php" class="btn btn-warning d-none d-sm-inline" >ปริ้นรายงาน</a>
                     <br>
                     <br>
                 </div>

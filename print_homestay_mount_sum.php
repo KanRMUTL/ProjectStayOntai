@@ -1,7 +1,6 @@
 <?PHP
 include 'function/db_function.php';
 include 'function/function.php';
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -9,7 +8,7 @@ include 'function/function.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>รายงานการเช็คเอาท์</title>
+    <title>รายงานสรุปจำนวนลูกค้า</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <style>
@@ -91,6 +90,11 @@ include 'function/function.php';
                 display: none;
             }
         }
+        .review{
+            text-align: left;
+            font-size: 13px;
+            font-weight: bold;
+        }
 
     </style>
 </head>
@@ -121,57 +125,61 @@ include 'function/function.php';
     <br>
     <br>
 
-    
-    <h1>รายงานการออกที่พักของลูกค้า</h1>
+    <h1>รายงานสรุปจำนวนลูกค้า</h1>
 
     <table class="table table-bordered">
 
         <thead>
             <tr style="background: #eeeeee;">
-                <th class="text-center" colspan="8">รายละเอียด</th>
+                <th class="text-center" colspan="6">รายละเอียด</th>
             </tr>
             <tr>
                 <th class="text-center" width="50">ลำดับ</th>
-                <th class="text-center" width="1000">เลขที่การจอง</th>
-                <th class="text-center" width="2500">โฮมสเตย์</th>
-                <th class="text-center" width="1500">ห้อง</th>
-                <th class="text-center" width="1000">ผู้จอง</th>
-                <th class="text-center" width="150">เบอร์โทรศัพท์</th>
-                <th class="text-center" width="1500">เช็คเอาท์</th>
+                <th class="text-center" width="2500">เลขที่ใบจอง</th>
+                <th class="text-center" width="2100">โฮมสเตย์</th>
+                <th class="text-center" width="1000">วันที่</th>
+                <th class="text-center" width="1000">จำนวนผู้ใหญ่</th>
+                <th class="text-center" width="1000">จำนวนเด็ก</th>
+                
             </tr>
         </thead>
         <tbody>
-         <?PHP
-            $start = date("Y-m-d");
-            $end =  date("Y-m-d");
-            if (isset($_GET['start']) && isset($_GET['end'])) {
-                $start = $_GET['start'];
-                $end = $_GET['end'];
-            }
-          $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE (booking_check_out  BETWEEN '{$start} 00:00:00' AND '{$end} 23:59:59') AND  booking_detail_status=5  ORDER BY a.booking_check_in ASC ";
-          $result = result_array($sql);
-          ?>
+          
+            <?PHP
+                    $yy = date("Y");
+                    $mm = date("m");
+                    if (isset($_GET['yy']) && isset($_GET['mm'])) {
+                        $yy = $_GET['yy'];
+                        $mm = $_GET['mm'];
+                    }
+                    
 
-          <?PHP foreach ($result as $key => $row) { ?>
-            <tr>
-                <td class="center"><?= $key + 1; ?></td>
-                <td class="center"><?= booking_id($row['booking_id']); ?></td>
-                <td class="center"><?= $row['homestay_name'] ?></td>
-                <td class="center"><?= $row['room_name'] ?></td>
-                <td class="center"><?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?></td>
-                <td class="center"><?= $row['user_tel']; ?></td>
-                <td class="center"><?= date_th($row['booking_check_out']); ?></td>
-            <?php }?>
-        </tr>
-    </tbody>
-</table>
+                    
 
-<br>
-<div style="text-align: right;">
-    ลงชื่อ............................................................................ <br>
-    เจ้าของโฮมสเตย์
+                    $uid = check_session("id"); 
+                    $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE ( MONTH(booking_date) = '{$mm}' AND YEAR(booking_date) = '{$yy}') AND e.user_id='{$uid}' AND booking_detail_status BETWEEN 3 AND 5 ORDER BY a.booking_check_in ASC";
+                    $result = result_array($sql);
+                    ?>
+            
+            <?PHP foreach ($result as $key => $row) { ?>
+                <tr>
+                    <td class="center"><?= $key + 1; ?></td>
+                    <td class="center"><?= booking_id($row['booking_id']); ?></td>
+                    <td class="center"><?= $row['homestay_name'] ?></td>
+                    <td class="center"><?= date_th($row['booking_date']); ?></td>
+                     <td class="center"><?= $row['booking_detail_adult'] ?></td>
+                    <td class="center"><?= $row['booking_detail_child'] ?></td>
+                <?php }?>
+            </tr>
+        </tbody>
+    </table>
 
-</div>
+    <br>
+    <div style="text-align: right;">
+        ลงชื่อ............................................................................ <br>
+        เจ้าของโฮมสเตย์
+
+    </div>
 
 </div>
 

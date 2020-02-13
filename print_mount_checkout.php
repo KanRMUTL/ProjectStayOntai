@@ -149,7 +149,7 @@ include 'function/function.php';
             $mm = $_GET['mm'];
         }
                     
-          $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE ( MONTH(booking_check_out) = '{$mm}' AND YEAR(booking_check_out) = '{$yy}') AND  booking_detail_status BETWEEN 1 AND 5  ORDER BY a.booking_check_out ASC ";
+          $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE ( MONTH(booking_check_out) = '{$mm}' AND YEAR(booking_check_out) = '{$yy}') AND  booking_detail_status=5  ORDER BY a.booking_check_out ASC ";
           $result = result_array($sql);
           ?>
 

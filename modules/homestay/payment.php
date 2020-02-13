@@ -196,8 +196,11 @@
 
                                         <div class="form-group">
                                             <label>เวลาโอน</label>
+
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                
+                                                    
+                                                    <div class="col-xs-6">
                                                     <select name="hh" class="form-control" required>
                                                         <option value="" disabled selected>เลือกชั่วโมง</option>
                                                         <option>00</option>
@@ -215,7 +218,8 @@
                                                         <?PHP } ?>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-6">
+                                                 
+                                                <div class="col-xs-6">
                                                     <select name="mm" class="form-control" required>
                                                         <option value="" disabled selected>เลือกนาที</option>
                                                         <option>00</option>

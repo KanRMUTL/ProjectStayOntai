@@ -112,7 +112,10 @@
                     $result = result_array($sql);
                     ?>
 
-                    <table class="table table-striped table-bordered table-hover">
+
+                          <!-- PC Screen -->   
+                    <div class="tb_all d-none d-sm-block">
+                     <table class="table table-striped table-bordered table-hover" >
                         <thead>
                         <tr>
                             <th width="50">ลำดับ</th>
@@ -161,10 +164,56 @@
                         <?PHP } ?>
                         </tbody>
                     </table>
+                    </div>
+                    <!-- End PC Screen --> 
 
-
+                    <!-- Mobile Screen -->    
+                   <table class="table table-striped table-bordered table-hover d-sm-none" id="table-mobile">
+                        <thead>
+                            <tr>
+                                <th width="50">รายการ</th>
+                            </tr>
+                            </thead>
+                        <tbody>
+                              <?PHP foreach ($result as $key => $row) { ?>
+                                 <tr>
+                                    <td class="text-left">
+                                        <ul class="list-group">
+                                            <li class="list-group-item text-center">
+                                                <b>ลำดับที่ <?= $key + 1; ?></b> 
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>เลขที่การจอง  : </b><?= booking_id($row['booking_id']); ?><br>
+                                                <b>โฮมสเตย์  : </b><?= $row['homestay_name'] ?><br>
+                                                <b>ห้อง  : </b><?= $row['room_name'] ?> <br>
+                                                <b>เช็คอิน : </b><?= date_th($row['booking_check_in']); ?> <br>
+                                                <b>เช็คเอาท์  : </b> <?= date_th($row['booking_check_out']); ?><br>
+                                                <b>จำนวนผู้ใหญ่  : </b><?= $row['booking_detail_adult'] ?><br>
+                                                <b>จำนวนเด็ก : </b><?= $row['booking_detail_child'] ?><br>
+                                                <b>รวมจำนวนคน  : </b><?= $row['user_address']; ?><br>
+                                                <b>เบอร์โทร : </b><?= $row['user_birth']; ?> <br>
+                                                <b>รวมจำนวนคน  : <?php   $people=($row['booking_detail_child']+$row['booking_detail_adult']); ?>
+                                                     <?= $people?>คน</b>    
+                                                     <hr style="margin: 5px">
+                                                     <?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?>
+                                                     <br>
+                                                <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
+                                                <b>ส่วนแบ่ง: </b><?= $row['commission_commis']; ?>%<br>
+                                                <b>
+                                                    <?PHP
+                                    $money = ($row['booking_detail_price'] * ($row['booking_detail_adult'] + $row['booking_detail_child'])) * $row['booking_detail_total'];
+                                    ?>
+                                     <b>ค่าคอม : </b><?= number_format($money * ($row['commission_commis'] / 100), 2) ?> บาท
+                                    <br>
+                                      <b>สถานะ : </b> <?= booking_detail_status($row['booking_detail_status']); ?><br>
+                                
+                                </tr>
+                            <?PHP } ?>
+                        </tbody>
+                    </table>
+                    <!--End Mobile Screen -->    
+             
                     <hr>
-
                     <a href="report.php" class="btn btn-warning">ย้อนกลับ</a>
 
                     <br>

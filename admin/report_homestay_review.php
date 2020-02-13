@@ -32,7 +32,8 @@
 
 
                     <?PHP
-                    $sql = "SELECT * FROM tb_review a INNER JOIN tb_user b ON a.user_id = b.user_id INNER JOIN tb_homestay d ON a.homestay_id = d.homestay_id ORDER BY review_id DESC ";
+                    $uid = check_session("id");
+                    $sql = "SELECT * FROM tb_review a INNER JOIN tb_user b ON a.user_id = b.user_id INNER JOIN tb_homestay d ON a.homestay_id = d.homestay_id WHERE  d.user_id='{$uid}' ORDER BY review_id DESC";
                     $list = result_array($sql);
                     ?>
 
