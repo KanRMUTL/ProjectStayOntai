@@ -32,14 +32,15 @@
                         $end_time = date("23:59");
                        
                         if (isset($_GET['start_date'], $_GET['start_date'])) {
+                            
                             $start_date = $_GET['start_date'];
-                            $start_tiem = $_GET['start_time'];
-                            $end_tiem = $_GET['end_time'];
-                            $end_tiem = $_GET['end_time'];
+                            $start_time = $_GET['start_time'];
+                            $end_date = $_GET['end_date'];
+                            $end_time = $_GET['end_time'];
 
                         }
-                        $start = $start_date.'T'.$start_time;
-                        $end = $end_date.'T'.$end_time;
+                        $start = $start_date.' '.$start_time;
+                        $end = $end_date.' '.$end_time;
                     ?>
                     <div class="row">
                         <div class="col-md-2">
@@ -113,6 +114,7 @@
                                     <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
                                     <b>อีเมล์ :</b> <?= $row['user_email']; ?> <br>
                                     <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
+                                    <b>ว/ด/ป :</b> <?= $row['booking_date']; ?> <br>
                                 </td>
 
                                 <td class="center">
