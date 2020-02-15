@@ -79,7 +79,7 @@
                 </form>
 
                 <?PHP
-                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE (booking_date BETWEEN '{$start} 00:00:00' AND '{$end} 23:59:59') ORDER BY a.booking_id DESC ";
+                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE booking_date > '$start' AND  booking_date < '$end' ORDER BY a.booking_id DESC ";
                 $result = result_array($sql);
                 ?>
                 <!-- PC Screen -->          
@@ -114,7 +114,7 @@
                                     <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
                                     <b>อีเมล์ :</b> <?= $row['user_email']; ?> <br>
                                     <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
-                                    <b>วันที่จอง :</b> date_format(date_create(<?= $row['booking_date']; ?>), 'd/m/Y H:m') <br>
+                                    <b>วันที่จอง :</b> <?= date_format(date_create( $row['booking_date']), 'd/m/Y H:m:s'); ?> <br>
                                 </td>
 
                                 <td class="center">
