@@ -148,7 +148,7 @@ include 'function/function.php';
                 $start = $_GET['start'];
                 $end = $_GET['end'];
             }
-          $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE (booking_check_out  BETWEEN '{$start} 00:00:00' AND '{$end} 23:59:59') AND  booking_detail_status BETWEEN 1 AND 5  ORDER BY a.booking_check_in ASC ";
+          $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE (booking_check_out  BETWEEN '{$start} 00:00:00' AND '{$end} 23:59:59') AND  booking_detail_status=5  ORDER BY a.booking_check_in ASC ";
           $result = result_array($sql);
           ?>
 

@@ -8,16 +8,7 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     
     <style type="text/css">
-        .loginbox{
-            position: absolute;
-            top:50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 450px;
-            height: 300px;
-            box-sizing: border-box;
-            background:rgba(0,0,0,.5);
-        }
+    
         h3{
             font-weight: bold;
             color: #FFFFFF;
@@ -31,39 +22,50 @@
             width: 35%; 
 
         }
-        .form-control{
-            width: 240%;
-            margin: 0px 0px 0px -50px;
-        }
+    .form_all {
+    background: #82b37a;
+    border: 2px solid;
+    border-radius: 30px;
+    padding: 20px 30px;
+    margin-bottom: 50px;
+     margin-top: 100px;
+     background: rgba(0,0,0,.5);
+}
+
+
+
+
+
     </style>
 
 </head>
 
-<body style="margin:0;padding:0; background-size:cover;background-image: url('assets/img/ontai.jpg');">
+<body style="margin:0;padding:0; background-repeat: no-repeat;background-attachment: fixed; background-size:cover;background-image: url('assets/img/ontai.jpg');">
 
 
 <div class="container">
-    <div class="loginbox">
     <div class="row" id="admin-main">
         <div class="col-md-6 col-md-offset-3">
+            
+            <div class="form_all">
             <h3 align ='center'>สำหรับผู้ดูแลระบบ</h3><br>
             <div class="admin-border-radius">
                 <form action="process/check_login.php" method="post" class="form-horizontal">
                     <div class="form-group">
-                        <div class="col-sm-3 control-lable">
-                            <h5>ชื่อผู้ใช้ :</h5>
-                        </div>
-                        <div class="col-sm-6">
+                        
+                           <label style="color: #FFFFFF" >ชื่อผู้ใช้ :</label>
+                        
+                        
                             <input type="email" name="email" required class="form-control">
-                        </div>
+                        
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-3 control-lable">
-                            <h5>รหัสผ่าน :</h5>
-                        </div>
-                        <div class="col-sm-6">
+                      
+                          <label style="color: #FFFFFF">รหัสผ่าน :</label>
+                        
+                        
                             <input type="password" name="password" required class="form-control">
-                        </div>
+                        
                     </div>
                     <div class="form-group">
                         <div class="col-sm-3"></div>
@@ -75,7 +77,9 @@
             </div>
         </div>
     </div>
+    
     </div>
+    
 </div>
 
 

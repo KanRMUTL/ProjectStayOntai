@@ -154,19 +154,75 @@
                     <?PHP
                      if(isset($_GET["day"])){    
                     $uid = check_session("id");
-                    $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE ( booking_check_in BETWEEN '{$start} 00:00:00' AND '{$end} 23:59:59') AND e.user_id='{$uid}' AND booking_detail_status BETWEEN 1 AND 4 ORDER BY a.booking_check_in ASC ";
+                    $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE ( booking_check_in BETWEEN '{$start} 00:00:00' AND '{$end} 23:59:59')AND e.user_id='{$uid}' AND booking_detail_status BETWEEN 3 AND 4 ORDER BY a.booking_check_in ASC ";
                     $result = result_array($sql);
                     ?>
 
+                     <!-- PC Screen -->   
+                    <div class="tb_all d-none d-sm-block">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
                             <th width="50">ลำดับ</th>
                             <th>รายการ</th>
                             <th>เช็คอิน</th>
-                          <!--   <th>เช็คเอาท์</th>
-                            <th>ราคารวม</th>
-                            <th width="100">สถานะ</th> -->
+                            <!-- <th>เช็คเอาท์</th>
+                            <th>ราคารวม</th> -->
+                            <th width="100">สถานะ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?PHP foreach ($result as $key => $row) { ?>
+                            <tr>
+                                <td class="center"><?= $key + 1; ?></td>
+                                <td class="text-left">
+                                    <b>เลขที่การจอง :</b> <?= booking_id($row['booking_id']); ?> <br>
+                                    <b>โฮมสเตย์ :</b> <?= $row['homestay_name'] ?> <br>
+                                    <b>ห้อง :</b> <?= $row['room_name'] ?> <br>
+
+                                    <hr style="margin: 5px">
+
+                                    <?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?> <br>
+                                    <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
+                                    <b>อีเมล์ :</b> <?= $row['user_email']; ?> <br>
+                                    <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
+                                </td>
+
+                                <td class="center"><?= date_th($row['booking_check_in']); ?></td>
+                                <!-- <td class="center"><?= date_th($row['booking_check_out']); ?></td>
+                                <td>
+                                    <?= ($row['booking_detail_price'] * ($row['booking_detail_adult'] + $row['booking_detail_child'])) * $row['booking_detail_total'] ?> บาท
+                                </td> -->
+                                <td class="center">
+                                    <?= booking_detail_status($row['booking_detail_status']); ?>
+                                </td>
+
+                            </tr>
+                        <?PHP } ?>
+                        </tbody>
+                    </table>
+                    </div>
+                     <!-- End PC Screen --> 
+
+
+                        <?php }elseif(isset($_GET["year"])){ ?>
+                        <?php
+                                $uid = check_session("id");
+                                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE ( MONTH(booking_check_in) = '{$mm}' AND YEAR(booking_check_in) = '{$yy}')AND e.user_id='{$uid}' AND booking_detail_status BETWEEN 3 AND 4 ORDER BY a.booking_check_in ASC ";
+                    $result = result_array($sql);
+                    ?>
+
+                    <!-- PC Screen -->   
+                    <div class="tb_all d-none d-sm-block">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th width="50">ลำดับ</th>
+                            <th>รายการ</th>
+                            <th>เช็คอิน</th>
+                           <!--  <th>เช็คเอาท์</th>
+                            <th>ราคารวม</th> -->
+                            <th width="100">สถานะ</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -190,70 +246,115 @@
                               <!--   <td class="center"><?= date_th($row['booking_check_out']); ?></td>
                                 <td>
                                     <?= ($row['booking_detail_price'] * ($row['booking_detail_adult'] + $row['booking_detail_child'])) * $row['booking_detail_total'] ?> บาท
-                                </td>
+                                </td> -->
                                 <td class="center">
                                     <?= booking_detail_status($row['booking_detail_status']); ?>
-                                </td> -->
+                                </td>
 
                             </tr>
                         <?PHP } ?>
-                         <?php }elseif(isset($_GET["year"])){ ?>
-                        <?php
-                                $uid = check_session("id");
-                                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE ( MONTH(booking_check_in) = '{$mm}' AND YEAR(booking_check_in) = '{$yy}') AND e.user_id='{$uid}' AND booking_detail_status BETWEEN 1 AND 4 ORDER BY a.booking_check_in ASC ";
+
+                     <?php }?>
+                         
+                         </tbody>
+                    </table>
+                    </div>
+                     <!-- End PC Screen --> 
+
+
+
+
+                     <?PHP
+                     if(isset($_GET["day"])){    
+                    $uid = check_session("id");
+                    $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE ( booking_check_in BETWEEN '{$start} 00:00:00' AND '{$end} 23:59:59')AND e.user_id='{$uid}' AND booking_detail_status BETWEEN 3 AND 4 ORDER BY a.booking_check_in ASC ";
                     $result = result_array($sql);
                     ?>
-
-                    <table class="table table-striped table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th width="50">ลำดับ</th>
-                            <th>รายการ</th>
-                            <th>เช็คอิน</th>
-                           <!--  <th>เช็คเอาท์</th>
-                            <th>ราคารวม</th>
-                            <th width="100">สถานะ</th> -->
-                        </tr>
-                        </thead>
+                    <!-- Mobile Screen -->    
+                    <table class="table table-striped table-bordered table-hover  d-sm-none" id="table-mobile">
+                        
                         <tbody>
-                        <?PHP foreach ($result as $key => $row) { ?>
-                            <tr>
-                                <td class="center"><?= $key + 1; ?></td>
-                                <td class="text-left">
-                                    <b>เลขที่การจอง :</b> <?= booking_id($row['booking_id']); ?> <br>
-                                    <b>โฮมสเตย์ :</b> <?= $row['homestay_name'] ?> <br>
-                                    <b>ห้อง :</b> <?= $row['room_name'] ?> <br>
+                              <?PHP foreach ($result as $key => $row) { ?>
+                                 <tr>
+                                     <td class="text-left">
+                                        <ul class="list-group">
+                                            <li class="list-group-item text-center">
+                                                <b>ลำดับที่ <?= $key + 1; ?></b> 
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>เลขที่การจอง :</b> <?= booking_id($row['booking_id']); ?> <br>
+                                                <b>โฮมสเตย์ :</b> <?= $row['homestay_name'] ?> <br>
+                                                <b>ห้อง :</b> <?= $row['room_name'] ?> <br>
 
-                                    <hr style="margin: 5px">
+                                                <hr style="margin: 5px">
 
-                                    <?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?> <br>
-                                    <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
-                                    <b>อีเมล์ :</b> <?= $row['user_email']; ?> <br>
-                                    <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
-                                </td>
+                                                <?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?> <br>
+                                                <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
+                                                <b>อีเมล์ :</b> <?= $row['user_email']; ?> <br>
+                                                <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
+                                                 <b>เช็คอิน :</b> <?= date_th($row['booking_check_in']); ?><br>
+                                                 <b>สถานะ :</b> <?= booking_detail_status($row['booking_detail_status']); ?>
+                                                </td>
+                                             </li>
+                                         </ul>
+                                    </td>
 
-                                <td class="center"><?= date_th($row['booking_check_in']); ?></td>
-                             <!--    <td class="center"><?= date_th($row['booking_check_out']); ?></td>
-                                <td>
-                                    <?= ($row['booking_detail_price'] * ($row['booking_detail_adult'] + $row['booking_detail_child'])) * $row['booking_detail_total'] ?> บาท
-                                </td>
-                                <td class="center">
-                                    <?= booking_detail_status($row['booking_detail_status']); ?>
-                                </td> -->
+                                    </tr>
+                                    <?PHP } ?>
+                                    </tbody>
+                                    </table>
+                               <!--End Mobile Screen -->   
 
-                            </tr>
-                        <?PHP } ?>
 
-                         <?php } ?>
-                        </tbody>
-                    </table>
+                     <?php }elseif(isset($_GET["year"])){ ?>
+                        <?php
+                                $uid = check_session("id");
+                                $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE ( MONTH(booking_check_in) = '{$mm}' AND YEAR(booking_check_in) = '{$yy}') AND e.user_id='{$uid}' AND booking_detail_status BETWEEN 3 AND 4 ORDER BY a.booking_check_in ASC ";
+                    $result = result_array($sql);
+                    ?> 
+
+                    <!-- Mobile Screen -->    
+                    <table class="table table-striped table-bordered table-hover  d-sm-none" id="table-mobile">
+                        
+                        <tbody>
+                              <?PHP foreach ($result as $key => $row) { ?>
+                                 <tr>
+                                     <td class="text-left">
+                                        <ul class="list-group">
+                                            <li class="list-group-item text-center">
+                                                <b>ลำดับที่ <?= $key + 1; ?></b> 
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>เลขที่การจอง :</b> <?= booking_id($row['booking_id']); ?> <br>
+                                                <b>โฮมสเตย์ :</b> <?= $row['homestay_name'] ?> <br>
+                                                <b>ห้อง :</b> <?= $row['room_name'] ?> <br>
+
+                                                <hr style="margin: 5px">
+
+                                                <?= $row['user_titlename'] ?><?= $row['user_name'] ?> <?= $row['user_lastname'] ?> <br>
+                                                <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
+                                                <b>อีเมล์ :</b> <?= $row['user_email']; ?> <br>
+                                                <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
+                                                 <b>เช็คอิน :</b> <?= date_th($row['booking_check_in']); ?><br>
+                                                 <b>สถานะ :</b> <?= booking_detail_status($row['booking_detail_status']); ?>
+                                                </li>
+                                         </ul>
+                                    </td>
+
+  
+
+                                    </tr>
+                                    <?PHP } ?>
+                                <?php }?>
+                                    </tbody>
+                                    </table> 
 
 
                     <hr>
 
                     <a href="report.php" class="btn btn-warning">ย้อนกลับ</a>
-                    <a href="../print_homestay_checkin.php?start=<?=$start;?>&end=<?=$end;?>" class="btn btn-warning">ปริ้นรายงานรายวัน</a>
-                    <a href="../print_homestay_mount_checkin.php?yy=<?=$yy;?>&mm=<?=$mm;?>" class="btn btn-warning">ปริ้นรายงานรายเดือน</a>
+                    <a href="../print_homestay_checkin.php?start=<?=$start;?>&end=<?=$end;?>" class="btn btn-warning d-none d-sm-inline">ปริ้นรายงานรายวัน</a>
+                    <a href="../print_homestay_mount_checkin.php?yy=<?=$yy;?>&mm=<?=$mm;?>" class="btn btn-warning d-none d-sm-inline">ปริ้นรายงานรายเดือน</a>
                     <br>
                     <br>
                 </div>

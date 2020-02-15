@@ -118,6 +118,10 @@ check_login('id', 'login.php');
     .tb-middle {
         vertical-align: middle !important;
     }
+
+    g.highcharts-button {
+        display: none !important;
+    }
 </style>
 
 

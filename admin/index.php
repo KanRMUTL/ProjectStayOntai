@@ -17,7 +17,7 @@
     <div class="col-sm-9 col-lg-9">
         <?PHP if (check_session('role') == 3) { ?>
             <div class="row">
-
+            <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="secretary.php">
                         <div class="dash-unit list_menu">
@@ -28,7 +28,8 @@
                         </div>
                     </a>
                 </div>
-
+            </div>
+            <!-- <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="agency.php">
                         <div class="dash-unit list_menu">
@@ -39,7 +40,8 @@
                         </div>
                     </a>
                 </div>
-
+            </div> -->
+             <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="owner.php">
                         <div class="dash-unit list_menu">
@@ -50,8 +52,8 @@
                         </div>
                     </a>
                 </div>
-
-
+            </div>
+             <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="visitplace.php">
                         <div class="dash-unit list_menu">
@@ -62,7 +64,8 @@
                         </div>
                     </a>
                 </div>
-
+            </div>
+             <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="otop.php">
                         <div class="dash-unit list_menu">
@@ -73,7 +76,8 @@
                         </div>
                     </a>
                 </div>
-
+                </div>
+             <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="news.php">
                         <div class="dash-unit list_menu">
@@ -84,7 +88,7 @@
                         </div>
                     </a>
                 </div>
-
+            </div>
                 <!-- <div class="col-sm-4 col-lg-4">
                     <a href="review.php">
                         <div class="dash-unit list_menu">
@@ -147,6 +151,7 @@
 
         <?PHP } elseif (check_session('role') == 2) { ?>
             <div class="row">
+            <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="news.php">
                         <div class="dash-unit list_menu">
@@ -157,7 +162,7 @@
                         </div>
                     </a>
                 </div>
-
+                </div>
                 <div class="col-sm-4 col-lg-4">
                     <a href="list_homestay.php">
                         <div class="dash-unit list_menu">
@@ -191,7 +196,7 @@
                     </a>
                 </div>
 
-                <div class="col-sm-4 col-lg-4 d-none d-sm-block">
+                <div class="col-sm-4 col-lg-4">
                     <a href="round_booking.php?reset">
                         <div class="dash-unit list_menu">
                             <div class="thumbnail">
@@ -201,7 +206,7 @@
                         </div>
                     </a>
                 </div>
-
+                <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="review.php">
                         <div class="dash-unit list_menu">
@@ -212,7 +217,8 @@
                         </div>
                     </a>
                 </div>
-
+                </div>
+                <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="promotion.php">
                         <div class="dash-unit list_menu">
@@ -223,7 +229,8 @@
                         </div>
                     </a>
                 </div>
-
+                </div>
+                <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="system.php">
                         <div class="dash-unit list_menu">
@@ -234,7 +241,7 @@
                         </div>
                     </a>
                 </div>
-
+                </div>
                 <div class="col-sm-4 col-lg-4">
                     <a href="report.php">
                         <div class="dash-unit list_menu">
@@ -251,6 +258,7 @@
 
         <?PHP } elseif (check_session('role') == 1) { ?>
             <div class="row">
+                <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="homestay.php">
                         <div class="dash-unit list_menu">
@@ -261,7 +269,7 @@
                         </div>
                     </a>
                 </div>
-
+                </div>
                 <div class="col-sm-4 col-lg-4">
                     <a href="booking.php">
                         <div class="dash-unit list_menu">
@@ -296,7 +304,7 @@
                 </div>
 
                 <div class="col-sm-4 col-lg-4">
-                    <a href="status_booking.php">
+                    <a href="status_booking_home.php">
                         <div class="dash-unit list_menu">
                             <div class="thumbnail">
                                 <img src="assets/img/icon/use.png">
@@ -305,7 +313,7 @@
                         </div>
                     </a>
                 </div>
-
+                <div class="hide_mobile">
                 <div class="col-sm-4 col-lg-4">
                     <a href="ledger_income.php">
                         <div class="dash-unit list_menu">
@@ -316,7 +324,7 @@
                         </div>
                     </a>
                 </div>
-
+                </div>
                 <div class="col-sm-4 col-lg-4">
                     <a href="report.php">
                         <div class="dash-unit list_menu">
@@ -327,7 +335,7 @@
                         </div>
                     </a>
                 </div>
-
+                <div class="hide_mobile">
                  <div class="col-sm-4 col-lg-4">
                     <a href="news.php">
                         <div class="dash-unit list_menu">
@@ -338,7 +346,7 @@
                         </div>
                     </a>
                 </div>
-
+                </div>
 
             </div>
 

@@ -68,10 +68,10 @@
                                         แก้ไข
                                     </a>
 
-                                    <a
-                                            href="process/delete.php?table=tb_homestay&ff=homestay_id&id=<?= $row['homestay_id']; ?>"
+                                  <a
+                                            href="process/delete.php?table=tb_room&ff=room_id&id=<?= $row['room_id']; ?>"
                                             class="btn btn-xs btn-danger"
-                                            onclick="return confirm_custom(this.href,ต้องการลบข้อมูลนี้?');">
+                                            onclick="return confirm_custom(this.href,'ต้องการลบข้อมูลนี้?');">
                                         ลบ
                                     </a>
                                 </td>

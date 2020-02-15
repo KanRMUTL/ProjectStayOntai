@@ -33,7 +33,7 @@
         <div id="register-wraper">
             <div id="register-form" style="position: relative;">
 
-                <legend>รายงานสรุปจำนวนลูกค้า</legend>
+                <legend>รายงานยอดลูกค้าที่เข้าพัก</legend>
 
                 <?PHP
                 $sql = "SELECT * FROM tb_otop";
@@ -147,7 +147,7 @@
 
 
                     <a href="report.php" class="btn btn-warning">ย้อนกลับ</a>
-                    <a href="../print_chart_customer.php?mm=<?=$mm;?>&yy=<?=$yy;?>" class="btn btn-warning">ปริ้นรายงาน</a>
+                    <!-- <a href="../print_chart_customer.php?mm=<?=$mm;?>&yy=<?=$yy;?>" class="btn btn-warning">ปริ้นรายงาน</a> -->
                     <br>
                     <br>
                 </div>
@@ -168,7 +168,7 @@
                 type: 'column'
             },
             title: {
-                text: 'รายงานสรุปจำนวนลูกค้า เดือน <?=mount_name($mm);?> พ.ศ. <?=$yy + 543;?>',
+                text: 'รายงานยอดลูกค้าที่เข้าพัก เดือน <?=mount_name($mm);?> พ.ศ. <?=$yy + 543;?>',
                 x: -20 //center
             },
             subtitle: {
@@ -192,9 +192,9 @@
                 valueSuffix: ' คน'
             },
             legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
+                layout: 'horizontal',
+                align: 'center',
+                 verticalAlign: 'bottom',
                 borderWidth: 0
             },
             series: <?=$data;?>

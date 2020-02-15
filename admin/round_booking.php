@@ -28,6 +28,7 @@ if (!isset($_SESSION['homestay'])) {
     $_SESSION['homestay']['type'] = "ทั้งหมด";
 
     $_SESSION['homestay']['booking'] = array();
+    $_SESSION['homestay']['service'] = array();
 }
 
 $date = $_SESSION['homestay']['start'];
@@ -325,11 +326,11 @@ $end = add_date($date, $total);
                                             <li class="list-group-item"> 
                                                <b>สถานะ : <?= $msg; ?></b>
                                             </li>
-                                            <li class="list-group-item"> 
+                                           <!--  <li class="list-group-item"> 
                                                 <a href="select_room.php?id=<?= $row['homestay_id']; ?>" class="btn btn-primary">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </td>
                                 </tr>

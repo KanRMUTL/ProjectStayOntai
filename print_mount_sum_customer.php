@@ -8,7 +8,7 @@ include 'function/function.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>รายงานการรีวิวที่พัก</title>
+    <title>รายงานสรุปจำนวนลูกค้า</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <style>
@@ -125,19 +125,21 @@ include 'function/function.php';
     <br>
     <br>
 
-    <h1>รายงานข้อมูลยอดจำนวนผู้เข้าพัก</h1>
+    <h1>รายงานสรุปจำนวนลูกค้า</h1>
 
     <table class="table table-bordered">
 
         <thead>
             <tr style="background: #eeeeee;">
-                <th class="text-center" colspan="4">รายละเอียด</th>
+                <th class="text-center" colspan="6">รายละเอียด</th>
             </tr>
             <tr>
                 <th class="text-center" width="50">ลำดับ</th>
                 <th class="text-center" width="2500">เลขที่ใบจอง</th>
                 <th class="text-center" width="2100">โฮมสเตย์</th>
-                <th class="text-center" width="1000">เช็คอิน</th>
+                <th class="text-center" width="2100">วันที่</th>
+                <th class="text-center" width="1000">จำนวนเด็ก</th>
+                <th class="text-center" width="1000">จำนวนผู้ใหญ่</th>
                 
             </tr>
         </thead>
@@ -152,8 +154,9 @@ include 'function/function.php';
                     }
                     
 
-             
-                 
+                    
+
+                    
                     $sql = "SELECT * FROM tb_booking a INNER JOIN tb_booking_detail b ON a.booking_id = b.booking_id INNER JOIN tb_room d ON b.room_id = d.room_id INNER JOIN tb_homestay e ON d.homestay_id = e.homestay_id INNER JOIN tb_user g ON a.user_id = g.user_id WHERE ( MONTH(booking_date) = '{$mm}' AND YEAR(booking_date) = '{$yy}') AND booking_detail_status BETWEEN 3 AND 5 ORDER BY a.booking_check_in ASC";
                     $result = result_array($sql);
                     ?>
@@ -164,6 +167,8 @@ include 'function/function.php';
                     <td class="center"><?= booking_id($row['booking_id']); ?></td>
                     <td class="center"><?= $row['homestay_name'] ?></td>
                     <td class="center"><?= date_th($row['booking_date']); ?></td>
+                    <td class="center"><?= $row['booking_detail_child'] ?></td>
+                    <td class="center"><?= $row['booking_detail_adult'] ?></td>
                 <?php }?>
             </tr>
         </tbody>

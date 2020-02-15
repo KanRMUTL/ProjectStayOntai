@@ -101,10 +101,16 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?PHP
+                            $sum = 0;
+                            ?>
                             <?PHP foreach ($list as $key => $row) { ?>
+                                <?PHP
+                                $sum = $sum + $row['money'];
+                                ?>
                                 <tr>
                                     <td class="center"><?= $row['name']; ?></td>
-                                    <td class="center"><?= $row['money']; ?></td>
+                                    <td class="center"><?=number_format($row['money'],2); ?></td>
                                     <td class="center"><?= $row['date']; ?></td>
                                     <td class="center"><?= get_homestay($row['homestay_id']); ?></td>
                                     <td class="center">
@@ -131,6 +137,11 @@
 
                             </tbody>
                         </table>
+                    </div>
+                    
+
+                    <div style="text-align: left; margin: 0px 25px;">
+                        <b>รายรับรวม</b> <b>: <?= number_format($sum,2); ?> บาท</b>
                     </div>
 
                 </div>

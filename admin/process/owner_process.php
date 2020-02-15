@@ -49,6 +49,7 @@ if (empty($id)) {
             "user_email" => $email,
             "user_password" => $password,
             "user_status" => 1,
+            "user_type" => 1,
             "create_at" => date("Y-m-d H:i:s"),
             "update_at" => date("Y-m-d H:i:s"),
             "user_name" => $name,
@@ -76,6 +77,7 @@ if (empty($id)) {
         $data = array(
             "user_password" => $password,
             "user_status" => 1,
+            "user_type" => 1,
             "update_at" => date("Y-m-d H:i:s"),
             "user_name" => $name,
             "user_lastname" => $lastname,

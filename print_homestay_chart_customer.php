@@ -132,7 +132,7 @@ if (isset($_GET['yy']) && isset($_GET['mm'])) {
     <br>
     <br>
 
-    <h1>รายงานสรุปจำนวนลูกค้า รายวัน </h1>
+    <h1>รายงานยอดลูกค้าที่เข้าพัก </h1>
 
     <table class="table table-bordered">
 

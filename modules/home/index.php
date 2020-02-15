@@ -42,7 +42,7 @@
                 (บ้านที่อุดมสมบูรณ์ เมืองที่สงบร่มเย็น) ทำให้ตำบลออนใต้มีเสน่ห์ดึงดูดให้ผู้คนเข้ามาเยี่ยมเยือน
             </div>
         </div>
-
+        <div class="br"></div>
         <div class="col-md-5">
             <div class="main-promotion">
                 <h2>PROMOTION</h2>

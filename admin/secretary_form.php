@@ -32,7 +32,6 @@
 
     $country = check_province($my['subdistrict_id']);
 
-
     if ($my) {
         $check_input = false;
     }
@@ -41,7 +40,6 @@
     if ($my['user_titlename'] != "") {
         $title =  $my['user_titlename'];
     }
-
     ?>
 
 
@@ -89,8 +87,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label>อีเมล์</label>
-                                <input type="email" class="form-control" value="<?= $my['user_email']; ?>" <?=$disabled;?> required>
-                                <input type="hidden" class="form-control" name="email"value="<?= $my['user_email']; ?>" required>
+                                <input type="hidden" class="form-control" name="email"
+                                       value="<?= $my['user_email']; ?>">
+                                <input type="email" class="form-control" name="email"
+                                       value="<?= $my['user_email']; ?>" <?=$disabled;?> required>
+                                
                             </div>
                             <div class="col-md-6">
                                 <label>รหัสผ่าน</label>
@@ -191,6 +192,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <div class="form-group">
                         <label>รูปภาพประจำตัว</label>

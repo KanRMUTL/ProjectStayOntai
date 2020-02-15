@@ -2,18 +2,24 @@
     a.link-head {
         color: gold !important;
     }
+
+     .nav-new {
+        list-style: none;
+        float: right;
+        padding-top: 10px;
+    }
 </style>
-<div class="navbar-nav navbar-inverse navbar-fixed-top">
+<div class="navbar-inverse navbar-fixed-top">
     <div class="container">
-        <div class="navbar-header">
+        <div class="navbar-header" style="width: 100%;">
 
             <a class="navbar-brand" href="index.php" style="font-size: 32px; color: #ffffff;"><img
                         src="assets/img/logo.png"
                         style="float: left; margin: -12px 10px 0 0; width: auto; height: 44px; border-radius: 50%; background: #ffffff;"
                         alt=""> OON TAI</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+        
+        
+            <ul class="nav-new">
                 <?PHP if (check_session("role") == 2) { ?>
                     <li>
                         <?PHP
