@@ -83,7 +83,7 @@ include 'function/function.php';
         @media print {
             .a4 {
                 border: none;
-                height: 205mm;
+                /*height: 205mm;*/
             }
 
             .print {

@@ -30,12 +30,30 @@
 
                 <div class="tb_all">
 
-
+                    
                     <?PHP
-                    $uid = check_session("id");
-                    $sql = "SELECT * FROM tb_payment p INNER JOIN tb_booking b ON p.booking_id = b.booking_id INNER JOIN tb_user u ON b.user_id = u.user_id INNER JOIN tb_booking_detail d ON b.booking_id = d.booking_id INNER JOIN tb_room m ON d.room_id = m.room_id INNER JOIN tb_homestay e ON m.homestay_id = e.homestay_id WHERE  e.user_id='{$uid}' AND booking_status BETWEEN 3 AND 5 ORDER BY payment_id DESC ";
 
-                    $list = result_array($sql);
+                    extract($_GET);
+    $list = array();
+   $uid = check_session("id");
+           $sql = "SELECT * FROM tb_payment p INNER JOIN tb_booking b ON p.booking_id = b.booking_id INNER JOIN tb_user u ON b.user_id = u.user_id INNER JOIN tb_booking_detail d ON b.booking_id = d.booking_id INNER JOIN tb_room m ON d.room_id = m.room_id INNER JOIN tb_homestay e ON m.homestay_id = e.homestay_id WHERE e.user_id='{$uid}' AND booking_status BETWEEN 3 AND 6 ORDER BY payment_id DESC ";
+    $result = result_array($sql);
+
+
+    $key = 0;
+    foreach ($result as $row) {
+        $list[$key]['payment_id'] = $row['payment_id'];
+        $list[$key]['payment_date'] = $row['payment_date'];
+        $list[$key]['payment_money'] = $row['payment_money'];
+        $list[$key]['payment_bank'] = $row['payment_bank'];
+        $list[$key]['booking_id'] = $row['booking_id'];
+    
+
+      
+    }   
+
+
+
                     ?>
 
                      <!-- PC Screen -->   
@@ -43,31 +61,38 @@
                     <table class="table table-striped table-bordered table-hover" id="table-js">
                         <thead>
                         <tr>
-                            <th width="50">ลำดับ</th>
+                            
                             <th>วันที่ชำระเงิน</th>
                             <th>ชื่อธนาคาร</th>
                             <th>ชื่อผู้ชำระเงิน</th>
                             <th>จำนวนเงิน</th>
-                            <th>สถานะ</th>
+                           
                         </tr>
                         </thead>
                         <tbody>
-                        <?PHP foreach ($list as $key => $row) { ?>
+                        <?PHP
+                            $sum = 0;
+                            ?>
+                        <?PHP foreach ($result as $row) { ?>
+                            <?PHP
+                                $sum = $sum + $row['payment_money'];
+                                ?>
                             <tr>
-                                <td class="center"><?= $key + 1; ?></td>
+                               
                                 <td class="center">
                                     <?= $row['payment_date']; ?>
                                 </td>
                                 <td class="center"><?= $row['payment_bank']; ?></td>
-                                <td class="center"><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?></td>
-                                <td class="center"><?= number_format($row['payment_money']); ?></td>
-                                <td class="center">
-                                    <?= booking_status($row['booking_status']); ?>
-                                </td>
+                                 <td class="center"><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?> </td>
+                                <td class="center"><?= number_format($row['payment_money'],2); ?></td>
+                                
                             </tr>
                         <?PHP } ?>
                         </tbody>
                     </table>
+                    </div>
+                     <div style="text-align: left; margin: 0px 25px;">
+                        <b>เงินที่ชำระจากลูกค้าที่มาพัก รวม</b> <b>: <?= number_format($sum,2); ?> บาท</b>
                     </div>
                      <!-- End PC Screen --> 
 
@@ -79,20 +104,18 @@
                             </tr>
                             </thead>
                         <tbody>
-                              <?PHP foreach ($list as $key => $row) { ?>
+                              <?PHP foreach ($result as  $row) { ?>
                                  <tr>
                                     <td class="text-left">
                                         <div style="white-space: normal;">
                                         <ul class="list-group">
-                                            <li class="list-group-item text-center">
-                                                <b>ลำดับที่ <?= $key + 1; ?></b> 
-                                            </li>
+                                         
                                             <li class="list-group-item">
                                                 <b>วันที่ชำระเงิน : </b><?= $row['payment_date']; ?><br>
                                                 <b>ชื่อธนาคาร : </b><?= $row['payment_bank']; ?><br>
                                                 <b>ชื่อผู้ชำระเงิน  : </b><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?> <br>
-                                                <b>จำนวนเงิน : <?= number_format($row['payment_money']); ?> <br>
-                                                <b>สถานะ : </b> <?= booking_status($row['booking_status']); ?> <br>
+                                                <b>จำนวนเงิน : <?= number_format($row['payment_money'],2); ?> <br>
+                                               
                                              </li>
                                          </ul>
                                      </div>

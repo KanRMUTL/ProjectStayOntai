@@ -6,7 +6,7 @@ include 'function/function.php';
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
@@ -148,24 +148,34 @@ include 'function/function.php';
             </tr>
         </thead>
         <tbody>
+         <?PHP
+
+         $uid = check_session("id");
+         $sql = "SELECT * FROM tb_payment p INNER JOIN tb_booking b ON p.booking_id = b.booking_id INNER JOIN tb_user u ON b.user_id = u.user_id INNER JOIN tb_booking_detail d ON b.booking_id = d.booking_id INNER JOIN tb_room m ON d.room_id = m.room_id INNER JOIN tb_homestay e ON m.homestay_id = e.homestay_id WHERE e.user_id='{$uid}' AND booking_status BETWEEN 3 AND 5 ORDER BY payment_id DESC ";
+
+         $list = result_array($sql);
+         ?>
+         <?PHP
+         $sum = 0;
+         ?>
+         <?PHP foreach ($list as $key => $row) { ?>
            <?PHP
-
-           $uid = check_session("id");
-           $sql = "SELECT * FROM tb_payment p INNER JOIN tb_booking b ON p.booking_id = b.booking_id INNER JOIN tb_user u ON b.user_id = u.user_id INNER JOIN tb_booking_detail d ON b.booking_id = d.booking_id INNER JOIN tb_room m ON d.room_id = m.room_id INNER JOIN tb_homestay e ON m.homestay_id = e.homestay_id WHERE e.user_id='{$uid}' AND booking_status BETWEEN 3 AND 5 ORDER BY payment_id DESC ";
-
-           $list = result_array($sql);
+           $sum = $sum + $row['payment_money'];
            ?>
-           <?PHP foreach ($list as $key => $row) { ?>
-            <tr>
-                <td class="center"><?= $key + 1; ?></td>
-                <td class="center"> <?= $row['payment_date']; ?></td>
-                <td class="center"><?= $row['payment_bank']; ?></td>
-                <td class="center"><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?></td>
-                <td class="center"><?= number_format($row['payment_money'], 2); ?></td>
-                <td class="center"><?= $row['homestay_name'] ?></td>
-            <?php }?>
-        </tr>
-    </tbody>
+           <tr>
+            <td class="center"><?= $key + 1; ?></td>
+            <td class="center"> <?= $row['payment_date']; ?></td>
+            <td class="center"><?= $row['payment_bank']; ?></td>
+            <td class="center"><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?></td>
+            <td class="center"><?= number_format($row['payment_money'], 2); ?></td>
+            <td class="center"><?= $row['homestay_name'] ?></td>
+        <?php }?>
+    </tr>
+
+    <tr>
+        <td colspan="6" style="text-align: right;"><b style="margin: 0px 33px;">ราคารวม :</b> <b> <?= number_format( $sum,2); ?> บาท</b></td>
+    </tr>
+</tbody>
 </table>
 <br>
 <br>

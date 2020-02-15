@@ -113,7 +113,8 @@
                     $data = array();
                     $name = array();
 
-                    $sql = "SELECT * FROM tb_homestay";
+                    $uid = check_session("id");
+                    $sql = "SELECT * FROM tb_homestay h WHERE h.user_id = {$uid}";
                     $result = result_array($sql);
 
                     foreach ($result as $i => $row) {

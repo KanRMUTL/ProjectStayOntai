@@ -109,7 +109,7 @@
                                 ?>
                                 <tr>
                                     <td class="center"><?= $row['name']; ?></td>
-                                    <td class="center"><?= $row['money']; ?></td>
+                                    <td class="center"><?=number_format($row['money'],2); ?></td>
                                     <td class="center"><?= $row['date']; ?></td>
                                     <td class="center"><?= get_homestay($row['homestay_id']); ?></td>
                                     <td class="center">
@@ -139,7 +139,7 @@
                     </div>
 
                      <div style="text-align: left; margin: 0px 25px;">
-                        <b>ราคารวม</b> <b>: <?= $sum; ?> บาท</b>
+                        <b>รายจ่ายรวม</b> <b>: <?= number_format($sum,2); ?> บาท</b>
                     </div>
 
 

@@ -83,7 +83,7 @@ include 'function/function.php';
         @media print {
             #print-div {
                 border: none;
-                height: 205mm;
+               /* height: 205mm;*/
             }
 
             .print {
@@ -188,7 +188,7 @@ include 'function/function.php';
             <?php }?>
         </tr>
          <tr>
-                <td colspan="6" style="text-align: right;"><b style="margin: 0px 33px;">ราคารวม :</b> <b> <?= $sum; ?> บาท</b></td>
+                <td colspan="6" style="text-align: right;"><b style="margin: 0px 33px;">ราคารวม :</b> <b> <?= number_format($sum,2); ?> บาท</b></td>
         </tr>
     </tbody>
 </table>

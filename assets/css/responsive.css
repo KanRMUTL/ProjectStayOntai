@@ -20,6 +20,13 @@
 
 @media (max-width: 600px) {
 
+.br{
+    margin-bottom: 10px;
+}
+.main-slide .slide{
+    display: none;
+}
+
 .table table-bordered{
     display: none;
 }

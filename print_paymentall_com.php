@@ -83,7 +83,7 @@ include 'function/function.php';
         @media print {
             #print-div {
                 border: none;
-                height: 205mm;
+                height: auto;
             }
 
             .print {
@@ -129,7 +129,7 @@ include 'function/function.php';
     </p>
     <br>
     <br>
-    <h1>รายงานการชำระเงินทั้งหมด</h1>
+    <h1>รายงานค่าคอมมิชชั่น</h1>
 
     <table class="table table-bordered">
 
@@ -168,7 +168,7 @@ include 'function/function.php';
                 <td class="center"><?= booking_id($row['booking_id']); ?></td>
                 <td class="center"><?= $row['homestay_name'] ?></td>
                 <td class="center"><?= $row['commission_commis']; ?>%</td>
-                <td class="center"><?= $row['homestay_name'] ?></td>
+               
                  <?PHP
                                     $money = ($row['booking_detail_price'] * ($row['booking_detail_adult'] + $row['booking_detail_child'])) * $row['booking_detail_total'];
                                     ?>
@@ -181,7 +181,7 @@ include 'function/function.php';
                         <?PHP } ?>
         </tr>
          <tr>
-                <td colspan="6" style="text-align: right;"><b style="margin: 0px 33px;">ราคารวม :</b> <b> <?= $sum; ?> บาท</b></td>
+                <td colspan="6" style="text-align: right;"><b style="margin: 0px 33px;">ราคารวม :</b> <b> <?= number_format($sum,2); ?> บาท</b></td>
         </tr>
     </tbody>
 </table>

@@ -28,6 +28,7 @@ if (!isset($_SESSION['homestay'])) {
     $_SESSION['homestay']['type'] = "ทั้งหมด";
 
     $_SESSION['homestay']['booking'] = array();
+    $_SESSION['homestay']['service'] = array();
 }
 
 $date = $_SESSION['homestay']['start'];

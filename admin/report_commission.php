@@ -164,7 +164,10 @@
                         <?PHP } ?>
                         </tbody>
                     </table>
+                     <!-- <a href="report.php" class="btn btn-warning">ย้อนกลับ</a> -->
+                    <a href="../print_paymentall_com.php" class="btn btn-warning d-none d-sm-inline" >ปริ้นรายงาน</a>
                     </div>
+
                     <!-- End PC Screen --> 
 
                     <!-- Mobile Screen -->    

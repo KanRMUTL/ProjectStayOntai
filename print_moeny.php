@@ -114,7 +114,8 @@ include 'function/function.php';
 
     <?PHP
     extract($_GET);
-    $sql = "SELECT * FROM tb_homestay";
+    $uid = check_session("id");
+    $sql = "SELECT * FROM tb_homestay h WHERE h.user_id = {$uid}";
     $result = result_array($sql);
     ?>
 

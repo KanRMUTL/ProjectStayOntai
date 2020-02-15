@@ -27,11 +27,11 @@
                 <legend>รายงานการชำระเงิน</legend>
 
 
-            <div class="table-tap">
+            <!-- <div class="table-tap">
                 <ul class="nav nav-tabs">
                         <li class='active'><a href="report_paymentall.php">การชำระเงินการจองโฮมสเตย์</a></li>
                         <li><a href="report_paymentall_com.php">การชำระเงินจากค่าคอมมินชั่น</a></li>
-                    </ul>
+                    </ul> -->
                 <div class="tb_all">
 
 
@@ -88,7 +88,7 @@
                                 </td>
                                 <td class="center"><?= $row['payment_bank']; ?></td>
                                 <td class="center"><?= $row['user_titlename']; ?><?= $row['user_name']; ?> <?= $row['user_lastname']; ?></td>
-                                <td class="center"><?= number_format($row['payment_money']); ?></td>
+                                <td class="center"><?= number_format($row['payment_money'],2); ?></td>
                                 <td class="center">
                                     <?= booking_status($row['booking_status']); ?>
                                 </td>
@@ -98,7 +98,7 @@
                     </table>
                     </div>
                     <div style="text-align: left; margin: 0px 25px;">
-                        <b>ราคารวม</b> <b>: <?= $sum; ?> บาท</b>
+                        <b>ชำระเงินรวม</b> <b>: <?= number_format($sum,2); ?> บาท</b>
                     </div>
                      <!-- End PC Screen --> 
 
@@ -140,7 +140,7 @@
                     <br>
                     <br>
                 </div>
-            </div>
+            <!-- </div> -->
             </div>
         </div>
     </div>
