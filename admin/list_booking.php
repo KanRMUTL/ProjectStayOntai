@@ -114,7 +114,7 @@
                                     <b>เบอร์โทร :</b> <?= $row['user_tel']; ?> <br>
                                     <b>อีเมล์ :</b> <?= $row['user_email']; ?> <br>
                                     <b>ว/ด/ป :</b> <?= $row['user_birth']; ?> <br>
-                                    <b>ว/ด/ป :</b> <?= $row['booking_date']; ?> <br>
+                                    <b>วันที่จอง :</b> date_format(date_create(<?= $row['booking_date']; ?>), 'd/m/Y H:m') <br>
                                 </td>
 
                                 <td class="center">
